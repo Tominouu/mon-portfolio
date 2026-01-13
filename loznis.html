@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loznis.view - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+
+    <header class="header-glass">
+    
+    <div class="logo">
+    <a href="index.html">Loznis.view</a>
+</div>
+
+    <nav class="header-center">
+        <ul>
+            <li><a href="index.html#projets">PROJETS</a></li>
+            <li><a href="apropos.html">À PROPOS</a></li>
+        </ul>
+    </nav>
+
+    <div class="header-right">
+        <a href="cv.html" class="btn-header-cta">
+            Mon CV <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</header>
+
+    <section class="loznis-choix">
+        <div class="container-titre-centre">
+    <h1 class="titre-lignes-cote">Loznis.view</h1>
+</div>
+        
+        <div class="conteneur-boutons">
+        <button class="btn-glass actif" onclick="afficherSection('video')">VIDÉO</button>
+        
+        <button class="btn-glass" onclick="afficherSection('photo')">PHOTO</button>
+    </div>
+    </section>
+
+    <section id="section-video" class="contenu-galerie">
+    <div class="grille-3x3">
+        
+        <div class="item-video" data-video-src="videos/bidart.mp4">
+            <img src="images/bidart.jpg" alt="Miniature Vidéo 1">
+            <div class="overlay-play">▶</div>
+        </div>
+
+        <div class="item-video" data-video-src="videos/rune.mp4">
+            <img src="images/rune.jpg" alt="Miniature Vidéo 2">
+            <div class="overlay-play">▶</div>
+        </div>
+
+        <div class="item-video" data-video-src="videos/marais.mp4">
+            <img src="images/Marais.jpg" alt="Miniature Vidéo 3">
+            <div class="overlay-play">▶</div>
+        </div>
+
+        <div class="item-video" data-video-src="videos/espa.mp4">
+            <img src="images/espa.jpg" alt="Miniature Vidéo 4">
+            <div class="overlay-play">▶</div>
+        </div>
+
+        <div class="item-video" data-video-src="videos/volcan1.mp4">
+            <img src="images/volcan1.jpg" alt="Miniature Vidéo 5">
+            <div class="overlay-play">▶</div>
+        </div>
+
+        <div class="item-video" data-video-src="videos/finist.mp4">
+            <img src="images/finist.jpg" alt="Miniature Vidéo 6">
+            <div class="overlay-play">▶</div>
+        </div>
+
+        <div class="item-video" data-video-src="videos/billiers.mp4">
+            <img src="images/Billiers.jpg" alt="Miniature Vidéo 7">
+            <div class="overlay-play">▶</div>
+        </div>
+
+        <div class="item-video" data-video-src="videos/volcan3.mp4">
+            <img src="images/Volcan3.jpg" alt="Miniature Vidéo 8">
+            <div class="overlay-play">▶</div>
+        </div>
+
+        <div class="item-video" data-video-src="videos/volcan2.mp4">
+            <img src="images/Volcan2.jpg" alt="Miniature Vidéo 9">
+            <div class="overlay-play">▶</div>
+        </div>
+
+    </div>
+</section>
+   
+
+   <div id="video-modal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div class="iframe-container"> <video id="lecteur-local" controls style="width: 100%; height: 100%; object-fit: contain;">
+                <source src="" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // --- 1. GESTION DES ONGLETS (VIDÉO / PHOTO) ---
+        // On attache la fonction à "window" pour qu'elle soit accessible par tes boutons HTML
+        window.afficherSection = function(type) {
+            const secVideo = document.getElementById('section-video');
+            const secPhoto = document.getElementById('section-photo');
+            
+            if(secVideo && secPhoto) {
+                secVideo.style.display = 'none';
+                secPhoto.style.display = 'none';
+                document.getElementById('section-' + type).style.display = 'block';
+            }
+
+            // Gestion des boutons actifs
+            const boutons = document.querySelectorAll('.btn-choix');
+            boutons.forEach(btn => btn.classList.remove('actif'));
+            // Si l'événement existe (clic), on active le bouton
+            if(event && event.target) event.target.classList.add('actif');
+        };
+
+        // --- 2. GESTION DU MODAL VIDÉO (VERSION LOCALE) ---
+        const modal = document.getElementById('video-modal');
+        const lecteur = document.getElementById('lecteur-local');
+        const closeBtn = document.querySelector('.close-btn');
+        const items = document.querySelectorAll('.item-video');
+
+        // A. Ouvrir la vidéo au clic
+        items.forEach(item => {
+            item.addEventListener('click', function() {
+                // On récupère le chemin de ton fichier (ex: videos/bidart.mp4)
+                const videoSrc = this.getAttribute('data-video-src');
+                
+                if (videoSrc) {
+                    console.log("Lecture de : " + videoSrc);
+                    lecteur.src = videoSrc;       // On charge la vidéo
+                    modal.classList.add('open');  // On affiche le modal
+                    lecteur.play();               // On lance la lecture
+                } else {
+                    console.error("Erreur : Pas de fichier vidéo trouvé dans data-video-src");
+                }
+            });
+        });
+
+        // B. Fonction pour fermer proprement
+        function fermerModal() {
+            modal.classList.remove('open'); // On cache le modal
+            lecteur.pause();                // On met pause
+            lecteur.src = "";               // On vide le lecteur
+        }
+
+        // C. Les déclencheurs de fermeture
+        if (closeBtn) closeBtn.addEventListener('click', fermerModal);
+
+        // Fermer si on clique sur le fond noir
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    fermerModal();
+                }
+            });
+        }
+    });
+</script>
+
+
+        
+    </script>
+<section id="section-photo" class="contenu-galerie" style="display: none;">
+    <div class="carousel-container">
+        
+        <div class="glass-frame">
+            <img id="main-photo" src="images/loznis1.jpg" alt="Galerie">
+        </div>
+
+        <div class="carousel-controls">
+            <button class="btn-glass nav-btn" onclick="changePhoto(-1)">&#10094;</button> 
+            <button class="btn-glass nav-btn" onclick="changePhoto(1)">&#10095;</button> 
+        </div>
+
+    </div>
+</section>
+
+<script>
+    // 1. Liste de tes images (Mets bien les bons noms !)
+    const photosLoznis = [
+        'images/loznis1.jpg', 
+        'images/loznis2.jpg',
+        'images/loznis3.jpg',
+        'images/loznis4.jpg',
+        'images/loznis5.jpg',
+        'images/loznis6.jpg',
+        'images/loznis7.jpg',
+        'images/loznis8.jpg',
+        'images/loznis9.jpg',
+        'images/loznis10.jpg'
+    ];
+
+    let currentPhotoIndex = 0;
+
+    // 2. La fonction qui change l'image
+    function changePhoto(direction) {
+        console.log("Le bouton a été cliqué !"); // Pour tester
+
+        currentPhotoIndex += direction;
+
+        // Si on dépasse la fin, on retourne au début
+        if (currentPhotoIndex >= photosLoznis.length) {
+            currentPhotoIndex = 0;
+        } 
+        // Si on recule avant le début, on va à la fin
+        else if (currentPhotoIndex < 0) {
+            currentPhotoIndex = photosLoznis.length - 1;
+        }
+
+        // On cherche l'image
+        const mainPhoto = document.getElementById('main-photo');
+        
+        if (mainPhoto) {
+            // Petit effet de clignotement pour la transition
+            mainPhoto.style.opacity = 0; 
+            
+            setTimeout(() => {
+                // On change la source
+                mainPhoto.src = photosLoznis[currentPhotoIndex];
+                // On réaffiche
+                mainPhoto.style.opacity = 1;
+            }, 200);
+        } else {
+            console.error("ERREUR : Je ne trouve pas l'image avec l'ID 'main-photo'");
+        }
+    }
+
+    // --- GESTION DES ONGLETS VIDÉO / PHOTO AVEC ANIMATION ---
+
+    function afficherSection(choix) {
+        // 1. On récupère les deux sections
+        const sectionVideo = document.getElementById('section-video');
+        const sectionPhoto = document.getElementById('section-photo');
+        
+        // 2. On récupère les boutons pour gérer la couleur (Actif/Pas actif)
+        // Astuce : On suppose que tes boutons ont onclick="afficherSection('video')" etc.
+        // On va chercher tous les boutons et retirer la classe 'actif'
+        const boutons = document.querySelectorAll('.conteneur-boutons button');
+        boutons.forEach(btn => btn.classList.remove('actif'));
+
+        // 3. On cache tout d'abord
+        sectionVideo.style.display = 'none';
+        sectionPhoto.style.display = 'none';
+
+        // 4. On prépare la section à afficher
+        let sectionAffichee;
+        
+        if (choix === 'video') {
+            sectionAffichee = sectionVideo;
+            boutons[0].classList.add('actif'); // Allume le bouton Vidéo
+        } else {
+            sectionAffichee = sectionPhoto;
+            boutons[1].classList.add('actif'); // Allume le bouton Photo
+        }
+
+        // 5. LA MAGIE DE L'ANIMATION ✨
+        sectionAffichee.style.display = 'block'; // On l'affiche
+        
+        // Petite astuce de codeur : on enlève la classe et on la remet pour relancer l'anim
+        sectionAffichee.classList.remove('fade-in-up');
+        void sectionAffichee.offsetWidth; // Force le navigateur à "reset" l'animation
+        sectionAffichee.classList.add('fade-in-up');
+    }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log("Le script Loznis est chargé !"); // Pour vérifier si ça marche
+
+        // 1. On repère les éléments
+        const boutons = document.querySelectorAll('.item-video');
+        const modal = document.getElementById('video-modal');
+        const lecteur = document.getElementById('lecteur-local');
+        const croix = document.querySelector('.close-btn');
+
+        // 2. On ajoute le clic sur chaque image
+        boutons.forEach(bouton => {
+            bouton.addEventListener('click', function() {
+                // On récupère le chemin de la vidéo écrit dans le HTML
+                const cheminVideo = this.getAttribute('data-video-src');
+                console.log("Clic détecté ! J'essaie d'ouvrir : " + cheminVideo);
+
+                if (cheminVideo) {
+                    // On met la vidéo dans le lecteur et on affiche
+                    lecteur.src = cheminVideo;
+                    modal.style.display = "flex"; // Affiche la fenêtre
+                    lecteur.play(); // Lance la lecture
+                } else {
+                    console.error("Erreur : Pas de lien vidéo trouvé (data-video-src vide)");
+                }
+            });
+        });
+
+        // 3. Fonction pour fermer
+        function fermer() {
+            modal.style.display = "none";
+            lecteur.pause();
+            lecteur.src = ""; // Stop net le chargement
+        }
+
+        // Fermer au clic sur la croix ou le fond noir
+        if(croix) croix.addEventListener('click', fermer);
+        
+        if(modal) {
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) fermer();
+            });
+        }
+    });
+</script>
+
+<footer class="footer-glass">
+    <div class="footer-content">
+        
+        <h2 class="footer-title">PRÊT À CRÉER ?</h2>
+        
+        <div class="availability-badge">
+            <span class="dot-rec">●</span> RECHERCHE STAGE : AVRIL - JUILLET <br>
+            <span class="sub-availability">(Possibilité Alternance)</span>
+        </div>
+
+        <p class="footer-subtitle">Déconnade</p>
+
+        <div class="contact-info">
+            <a href="mailto:lorenzoleroho56@gmail.com" class="contact-link">lorenzoleroho56@gmail.com</a>
+            <span class="separator">|</span>
+            <a href="tel:+33622359306" class="contact-link">06 22 35 93 06</a>
+        </div>
+
+        <div class="footer-social">
+            <a href="mailto:lorenzoleroho56@gmail.com" class="social-icon" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://www.instagram.com/loznis.view/" target="_blank" class="social-icon" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com/@Onsenbattt" target="_blank" class="social-icon" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/lorenzo-le-roho-95a2612b4/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 LORENZO LE ROHO. Tous droits réservés à moi.</p>
+        </div>
+
+    </div>
+</footer>
+
+
+</body> </html>
+
+</body>
+</html>
