@@ -533,73 +533,73 @@ footer {
     transform: translate(-50%, -50%) scale(1.2);
 }
 
-/* --- 3. LE MODAL VIDÉO (VERSION CORRIGÉE) --- */
+/* =========================================
+   STYLE DU LECTEUR YOUTUBE (VERSION FINALE)
+   ========================================= */
+
+/* 1. Le fond noir (Overlay) */
 .modal-overlay {
+    display: none; /* Caché par défaut (et pas opacity:0 !) */
     position: fixed;
-    top: 0;
+    top: 0; 
     left: 0;
-    width: 100%;
+    width: 100%; 
     height: 100%;
-    background: rgba(0,0,0,0.95); /* Fond noir opaque */
-    z-index: 9999; /* Tout devant */
-    display: flex;
+    background-color: rgba(0, 0, 0, 0.95); /* Noir profond */
+    z-index: 10000; /* Au-dessus de tout le reste */
     justify-content: center;
     align-items: center;
-
-    /* Animation d'apparition */
-    opacity: 0;
-    pointer-events: none; /* On clique au travers si caché */
-    transition: opacity 0.3s ease;
 }
 
-/* Classe ajoutée par le JS pour afficher */
-.modal-overlay.open {
-    opacity: 1;
-    pointer-events: all; /* Devient cliquable */
+/* C'est cette classe que le JS ajoute pour afficher */
+.modal-overlay.active {
+    display: flex !important; /* Force l'affichage */
 }
 
+/* 2. Le conteneur de la vidéo */
 .modal-content {
-    width: 90%; /* Un peu plus large sur mobile */
-    max-width: 1000px;
     position: relative;
+    width: 90%;
+    max-width: 1200px; /* Largeur max */
+    background: #000;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(250, 72, 28, 0.2); /* Lueur orange */
 }
 
-/* Le conteneur format 16:9 */
+/* 3. Le ratio 16/9ème (CRUCIAL pour voir l'image) */
 .iframe-container {
     position: relative;
-    padding-bottom: 56.25%; /* Ratio magique 16:9 */
+    width: 100%;
+    padding-bottom: 56.25%; /* Ratio 16:9 */
     height: 0;
-    background: #000; /* Fond noir pendant chargement */
-    border-radius: 5px;
-    overflow: hidden;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 
-/* C'EST ICI LA CORRECTION IMPORTANTE : */
-/* On cible la balise VIDEO et non plus IFRAME */
-.iframe-container video {
+/* On cible bien l'IFRAME (YouTube) et non 'video' (Local) */
+.iframe-container iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain; /* La vidéo entière est visible */
-    outline: none;
+    border: none;
+    border-radius: 10px; /* Arrondir aussi la vidéo */
 }
 
-/* La croix de fermeture */
+/* 4. La croix de fermeture */
 .close-btn {
     position: absolute;
     top: -50px;
     right: 0;
     color: white;
-    font-size: 3rem;
+    font-size: 40px;
     cursor: pointer;
-    transition: color 0.3s ease;
+    z-index: 10001;
+    transition: transform 0.3s, color 0.3s;
 }
 
 .close-btn:hover {
-    color: #FA481C; /* Devient orange au survol */
+    color: #FA481C;
+    transform: rotate(90deg); /* Petite animation stylée */
 }
 
 /* Mobile : 1 colonne */
