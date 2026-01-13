@@ -1879,3 +1879,55 @@ footer {
     text-align: center;
     width: 100%;
 }
+
+/* La fenêtre noire de fond */
+.modal-overlay {
+    display: none; /* Caché par défaut */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* La classe qui active l'affichage */
+.modal-overlay.active {
+    display: flex;
+}
+
+/* La boîte blanche/contenu */
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1000px; /* Largeur max de la vidéo */
+    background: transparent;
+}
+
+/* Le ratio 16/9 OBLIGATOIRE pour YouTube */
+.iframe-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Ratio 16:9 */
+    height: 0;
+}
+
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* La croix de fermeture */
+.close-btn {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 1001;
+}

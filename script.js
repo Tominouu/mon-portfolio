@@ -80,49 +80,45 @@ window.changePhoto = function(direction) {
 
        
 document.addEventListener('DOMContentLoaded', () => {
-    const items = document.querySelectorAll('.item-video');
-    const modal = document.getElementById('video-modal');
-    const iframe = document.getElementById('lecteur-youtube');
-    const closeBtn = document.querySelector('.close-btn');
+    // 1. On sélectionne les éléments
+    const triggers = document.querySelectorAll('.item-video'); // Tes images cliquables
+    const modal = document.getElementById('video-modal');      // La fenêtre noire
+    const iframe = document.getElementById('lecteur-youtube'); // Le lecteur YouTube
+    const closeBtn = document.querySelector('.close-btn');     // La croix
 
-    // 1. OUVERTURE DE LA MODALE
-    items.forEach(item => {
-        item.addEventListener('click', () => {
-            const youtubeId = item.getAttribute('data-youtube-id');
+    // 2. Quand on clique sur une image
+    triggers.forEach(item => {
+        item.addEventListener('click', function() {
+            // On récupère l'ID que tu as mis dans le HTML (ex: cdPgFZ63LjA)
+            const youtubeId = this.getAttribute('data-youtube-id');
             
-            // On vérifie qu'il y a bien un ID
-            if (youtubeId && youtubeId.length > 5) {
-                // L'URL magique qui nettoie l'interface
-                // autoplay=1 : lance direct
-                // controls=0 : cache les boutons play/pause/son
-                // rel=0 : pas de pubs concurrentes à la fin
-                // modestbranding=1 : moins de logo YouTube
-                const url = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&controls=0&rel=0&modestbranding=1&showinfo=0`;
+            if (youtubeId) {
+                // On crée l'adresse YouTube Embed
+                const url = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&showinfo=0&modestbranding=1`;
                 
+                // On l'injecte dans l'iframe
                 iframe.src = url;
                 
-                // On affiche la boîte
-                modal.classList.add('active'); 
-                modal.style.display = 'flex'; 
-            } else {
-                console.error("Erreur : ID YouTube manquant ou invalide !");
+                // On affiche la modale
+                modal.classList.add('active');
             }
         });
     });
 
-    // 2. FERMETURE
-    function fermerModal() {
+    // 3. Fonction pour fermer (coupe le son)
+    function closeModal() {
         modal.classList.remove('active');
-        modal.style.display = 'none';
-        iframe.src = ""; // Coupe le son immédiatement
+        iframe.src = ""; // Important : vide la source pour arrêter la musique
     }
 
-    if(closeBtn) closeBtn.addEventListener('click', fermerModal);
+    // Clic sur la croix
+    if(closeBtn) closeBtn.addEventListener('click', closeModal);
 
+    // Clic en dehors de la vidéo (sur le fond noir)
     if(modal) {
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
-                fermerModal();
+                closeModal();
             }
         });
     }
