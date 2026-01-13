@@ -78,52 +78,49 @@ window.changePhoto = function(direction) {
             if(event && event.target) event.target.classList.add('actif');
         };
 
-        // --- PARTIE 2 : GESTION DU MODAL (VIDÉOS LOCALES) ---
-        const modal = document.getElementById('video-modal');
-        const lecteur = document.getElementById('lecteur-local');
-        const closeBtn = document.querySelector('.close-btn');
-        const items = document.querySelectorAll('.item-video');
+       document.addEventListener('DOMContentLoaded', () => {
+    const items = document.querySelectorAll('.item-video');
+    const modal = document.getElementById('video-modal');
+    const iframe = document.getElementById('lecteur-youtube');
+    const closeBtn = document.querySelector('.close-btn');
 
-        // A. QUAND ON CLIQUE SUR UNE IMAGE
-        items.forEach(item => {
-            item.addEventListener('click', function() {
-                // 1. On cherche le fichier vidéo
-                const videoSrc = this.getAttribute('data-video-src');
+    // Quand on clique sur une vidéo
+    items.forEach(item => {
+        item.addEventListener('click', () => {
+            const youtubeId = item.getAttribute('data-youtube-id');
+            
+            if (youtubeId) {
+                // Construction de l'URL YouTube "propre"
+                // autoplay=1 : lance la vidéo direct
+                // controls=0 : cache la barre de lecture en bas
+                // rel=0 : affiche tes vidéos à toi à la fin, pas celles des concurrents
+                // modestbranding=1 : réduit le logo YouTube
+                const url = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&controls=0&rel=0&modestbranding=1&showinfo=0`;
                 
-                if (videoSrc) {
-                    // 2. On met le lien dans le lecteur
-                    lecteur.src = videoSrc;
-                    
-                    // 3. On ajoute la classe 'open' (pour que le CSS l'affiche)
-                    modal.classList.add('open');
-                    
-                    // 4. On lance la lecture
-                    lecteur.play();
-                } else {
-                    console.error("Erreur : Pas de fichier vidéo trouvé !");
-                }
-            });
+                iframe.src = url;
+                modal.classList.add('active'); // Affiche la modale (vérifie que ton CSS utilise bien la classe .active pour afficher)
+                modal.style.display = 'flex'; // Sécurité si tu utilises display flex
+            }
         });
+    });
 
-        // B. FONCTION POUR FERMER
-        function fermerModal() {
-            modal.classList.remove('open'); // On enlève la classe 'open'
-            lecteur.pause();                // Pause
-            lecteur.src = "";               // On vide le lecteur
-        }
+    // Fonction pour fermer
+    function fermerModal() {
+        modal.classList.remove('active');
+        modal.style.display = 'none';
+        iframe.src = ""; // On coupe la source pour arrêter le son
+    }
 
-        // C. LES DÉCLENCHEURS DE FERMETURE
-        if (closeBtn) closeBtn.addEventListener('click', fermerModal);
+    // Clic sur la croix
+    closeBtn.addEventListener('click', fermerModal);
 
-        // Fermer si on clique sur le fond noir
-        if (modal) {
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    fermerModal();
-                }
-            });
+    // Clic en dehors de la vidéo
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            fermerModal();
         }
     });
+});
 
 
 
