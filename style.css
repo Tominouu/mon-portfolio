@@ -1975,7 +1975,7 @@ footer {
     background: rgba(67, 59, 59, 0.03); /* Fond subtil */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid #FA481C;
     
     max-width: 900px;
     margin: 60px auto 50px; /* Centré verticalement et horizontalement */
