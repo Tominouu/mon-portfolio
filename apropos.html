@@ -38,37 +38,84 @@
         </div>
     </header>
 
-    </header>
+    <!-- HERO CINÉMATIQUE TYPOGRAPHIQUE -->
+    <section class="hero-about">
+        <div class="hero-about-content">
+            <span class="hero-subtitle">Vidéaste & Créateur</span>
+            <h1 class="hero-title-jumbo">MON <span class="outline-text">UNIVERS</span></h1>
+            <p class="hero-description">Derrière la caméra, une histoire de passion et de valeurs.</p>
+        </div>
+        <div class="scroll-indicator-about">
+            <span>Découvrir</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
 
-    <header class="header-video">
-        <h1 class="titre-principal">
-            <span style="color: #ffffff;">Mon Uni</span><span style="color: #ffffff;">vers</span>
-        </h1>
-        <p class="sous-titre">Derrière la caméra, il y a une histoire et des valeurs.</p>
-    </header>
-
-    <section class="section-categorie intro-profil">
-        <div class="profil-wrapper glass-box">
-            <div class="profil-img">
-                <img src="images/ton_portrait.jpg" alt="Portrait Vidéaste">
+    <!-- SECTION BIO MODERNE (SPLIT) -->
+    <section class="section-bio">
+        <div class="bio-container">
+            <div class="bio-visual">
+                <div class="portrait-frame">
+                    <img src="images/ton_portrait-2.jpg" alt="Lorenzo Le Roho">
+                    <div class="frame-accent"></div>
+                </div>
             </div>
 
-            <div class="profil-text">
-                <h2 class="timecode">TC: 00:00:00:00 <span class="rec-dot">● REC</span></h2>
-                <h3>Qui suis-je ?</h3>
-                <p>
-                    Moi c'est Lorenzo, un jeune breton de 20 ans plein de motivation !
-                    Passionné d’aventure, de voyage et de nature, je transforme ces inspirations en contenu créatif :
-                    photos, vidéos.
-                <p>
-                    Actuellement étudiant en BUT MMI à Bordeaux, je cherche toujours à repousser les limites de ma
-                    créativité,
-                    que ce soit pour un documentaire, un reportage engagé ou du contenu de marque.
-                </p>
+            <div class="bio-content">
+                <div class="bio-header">
+                    <span class="bio-number">01.</span>
+                    <h2>QUI SUIS-JE ?</h2>
+                </div>
 
-                <a href="mon_cv.pdf" target="_blank" class="btn-univert" style="margin-top: 20px;">
-                    <i class="fas fa-file-download"></i> TÉLÉCHARGER MON CV
-                </a>
+                <div class="bio-text">
+                    <p class="lead-text">Moi c'est <span class="highlight-text">Lorenzo</span>, un jeune breton de 20
+                        ans plein de motivation !</p>
+                    <p>
+                        Passionné d’aventure, de voyage et de nature, je transforme ces inspirations en contenu créatif.
+                        Actuellement étudiant en <strong>BUT MMI à Bordeaux</strong>, je cherche toujours à repousser
+                        les limites de ma créativité,
+                        que ce soit pour un <span class="highlight-text">documentaire</span>, un reportage engagé ou du
+                        contenu de marque.
+                    </p>
+                </div>
+
+                <div class="bio-actions">
+                    <a href="cv.html" class="btn-glass">
+                        <span>Afficher Mon CV</span>
+                        <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION TOOLBOX -->
+    <section class="section-toolbox">
+        <div class="toolbox-header">
+            <span class="section-tag">COMPÉTENCES</span>
+            <h2>MA <span class="highlight-text">TOOLBOX</span></h2>
+        </div>
+
+        <div class="toolbox-grid">
+            <div class="tool-card">
+                <i class="fas fa-video tool-icon"></i>
+                <h4>Production</h4>
+                <p>Sony A7III, Drone FPV</p>
+            </div>
+            <div class="tool-card">
+                <i class="fas fa-film tool-icon"></i>
+                <h4>Montage</h4>
+                <p>Premiere Pro, DaVinci</p>
+            </div>
+            <div class="tool-card">
+                <i class="fas fa-magic tool-icon"></i>
+                <h4>Motion</h4>
+                <p>After Effects</p>
+            </div>
+            <div class="tool-card">
+                <i class="fas fa-camera tool-icon"></i>
+                <h4>Photo</h4>
+                <p>Lightroom, Photoshop</p>
             </div>
         </div>
     </section>
@@ -215,6 +262,7 @@
         window.addEventListener('resize', updateTimelineGlow);
     </script>
 
+    <script src="script.js"></script>
 </body>
 
 </html>

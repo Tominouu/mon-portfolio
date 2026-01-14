@@ -638,7 +638,7 @@ footer {
 /* 1. Boutons de choix */
 .loznis-choix {
     text-align: center;
-    padding: 60px 20px;
+    padding: 120px 20px 60px;
 }
 
 .titre-projet {
@@ -663,6 +663,8 @@ footer {
 
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: #ccc;
+    text-decoration: none;
+    /* Pas de soulignement */
 
     padding: 12px 40px;
     border-radius: 50px;
@@ -899,7 +901,15 @@ footer {
     max-height: 70vh;
     border-radius: 10px;
     display: block;
-    transition: opacity 0.3s ease;
+    /* Transition "Smooth" : Opacité + Échelle */
+    transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    transform: scale(1);
+}
+
+.glass-frame img.hidden {
+    opacity: 0;
+    transform: scale(0.96);
 }
 
 .carousel-controls {
@@ -969,6 +979,353 @@ footer {
     margin-top: 40px;
     margin-bottom: 60px;
     /* Espace en bas pour séparer de la section suivante */
+}
+
+/* ========================================
+   HERO CINÉMATIQUE - ON S'EN BATTT
+   ======================================== */
+
+.street-content.cinematic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+}
+
+.hero-tag-street {
+    display: inline-block;
+    background: rgba(250, 72, 28, 0.15);
+    border: 1px solid rgba(250, 72, 28, 0.5);
+    color: #FA481C;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.titre-hero-big {
+    font-size: 5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    letter-spacing: 15px;
+    margin: 20px 0;
+    text-transform: uppercase;
+    text-shadow: 0 0 60px rgba(250, 72, 28, 0.3);
+}
+
+.tagline-street {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1rem;
+    color: #aaa;
+    letter-spacing: 2px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dot-separator {
+    color: #FA481C;
+    font-size: 1.5rem;
+}
+
+.social-actions.glow-buttons .btn-social-glass {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.social-actions.glow-buttons .btn-social-glass.yt:hover {
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.5);
+}
+
+.social-actions.glow-buttons .btn-social-glass.insta:hover {
+    box-shadow: 0 0 40px rgba(225, 48, 108, 0.5);
+}
+
+.scroll-indicator-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-top: 40px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    transition: color 0.3s;
+}
+
+.scroll-indicator-hero:hover {
+    color: #FA481C;
+}
+
+.scroll-indicator-hero i {
+    font-size: 1.2rem;
+}
+
+/* Responsive Hero */
+@media (max-width: 768px) {
+    .titre-hero-big {
+        font-size: 2.5rem;
+        letter-spacing: 8px;
+    }
+
+    .tagline-street {
+        font-size: 0.9rem;
+        gap: 10px;
+    }
+
+    .hero-tag-street {
+        font-size: 0.75rem;
+        padding: 8px 18px;
+    }
+}
+
+/* ========================================
+   HERO CINÉMATIQUE - I CLEAN MY SEA
+   ======================================== */
+
+.hero-icms {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 80px;
+    padding-bottom: 0;
+}
+
+/* Section sans cassure visuelle */
+.section-seamless {
+    position: relative;
+    padding: 40px 20px 60px;
+    background: #0a0a0a;
+    margin-top: -1px;
+}
+
+.hero-background-icms {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradient stops at black well before the end to ensure seamless transition */
+    background: linear-gradient(180deg, #0a0a0a 0%, #051a1a 40%, #051a1a 60%, #0a0a0a 98%, #0a0a0a 100%);
+}
+
+.hero-gradient-icms {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(0, 150, 136, 0.15) 0%, transparent 60%);
+}
+
+.hero-content-icms {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.hero-tag-icms {
+    display: inline-block;
+    background: rgba(0, 150, 136, 0.15);
+    border: 1px solid rgba(0, 150, 136, 0.5);
+    color: #00BFA5;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.titre-hero-icms {
+    font-size: 4.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    letter-spacing: 10px;
+    margin: 20px 0;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #ffffff 0%, #00BFA5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 60px rgba(0, 150, 136, 0.3);
+}
+
+.tagline-icms {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1rem;
+    color: #aaa;
+    letter-spacing: 2px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dot-separator-icms {
+    color: #00BFA5;
+    font-size: 1.5rem;
+}
+
+.scroll-indicator-icms {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-top: 40px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    transition: color 0.3s;
+}
+
+.scroll-indicator-icms:hover {
+    color: #00BFA5;
+}
+
+/* Responsive Hero ICMS */
+@media (max-width: 768px) {
+    .titre-hero-icms {
+        font-size: 2rem;
+        letter-spacing: 5px;
+    }
+
+    .tagline-icms {
+        font-size: 0.9rem;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .dot-separator-icms {
+        display: none;
+    }
+
+    .hero-tag-icms {
+        font-size: 0.75rem;
+        padding: 8px 18px;
+    }
+}
+
+/* ========================================
+   THÈME OCÉAN - I CLEAN MY SEA
+   Override des couleurs pour toute la page
+   ======================================== */
+
+.theme-ocean .highlight-text {
+    color: #00BFA5;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+}
+
+.theme-ocean .section-line {
+    background: linear-gradient(90deg, transparent, rgba(0, 191, 165, 0.5), transparent);
+}
+
+.theme-ocean .section-title .highlight-text {
+    color: #00BFA5;
+}
+
+/* Glass intro box */
+.theme-ocean .glass-intro-box {
+    border: 1px solid rgba(0, 191, 165, 0.3);
+    box-shadow: 0 0 30px rgba(0, 191, 165, 0.1);
+}
+
+.theme-ocean .glass-intro-box:hover {
+    box-shadow: 0 0 50px rgba(0, 191, 165, 0.2);
+    border-color: rgba(0, 191, 165, 0.5);
+}
+
+/* Slideshow container */
+.theme-ocean .slideshow-glass-container {
+    border: 1px solid rgba(0, 191, 165, 0.3);
+}
+
+/* Slideshow arrows */
+.theme-ocean .slide-arrow:hover {
+    background: #00BFA5;
+    border-color: #00BFA5;
+    box-shadow: 0 0 20px rgba(0, 191, 165, 0.5);
+}
+
+/* Slideshow dots */
+.theme-ocean .slide-dots .dot.active {
+    background: #00BFA5;
+    box-shadow: 0 0 10px rgba(0, 191, 165, 0.5);
+}
+
+.theme-ocean .slide-dots .dot:hover {
+    background: rgba(0, 191, 165, 0.5);
+}
+
+/* Bouton Instagram */
+.theme-ocean .btn-docu {
+    background: #00BFA5;
+    box-shadow: 0 4px 20px rgba(0, 191, 165, 0.3);
+}
+
+.theme-ocean .btn-docu:hover {
+    background: transparent;
+    border: 2px solid #00BFA5;
+    box-shadow: 0 0 30px rgba(0, 191, 165, 0.5);
+}
+
+/* Footer pour ICMS */
+.theme-ocean .footer-glass {
+    border-top: 1px solid rgba(0, 191, 165, 0.2);
+}
+
+.theme-ocean .availability-badge {
+    background: rgba(0, 191, 165, 0.1);
+    border-color: #00BFA5;
+    color: #00BFA5;
+}
+
+.theme-ocean .dot-rec {
+    color: #00BFA5;
+    text-shadow: 0 0 10px #00BFA5;
+}
+
+.theme-ocean .contact-link:hover {
+    color: #00BFA5;
+}
+
+.theme-ocean .social-icon:hover {
+    color: #00BFA5;
+    box-shadow: 0 0 20px rgba(0, 191, 165, 0.5);
+    border-color: #00BFA5;
+}
+
+/* Header button for ICMS */
+.theme-ocean .btn-header-cta {
+    background-color: #00BFA5;
+    box-shadow: 0 4px 15px rgba(0, 191, 165, 0.3);
+    border: 2px solid transparent;
+    /* Prevents layout shift on hover */
+    transition: all 0.3s ease;
+}
+
+.theme-ocean .btn-header-cta:hover {
+    background: transparent;
+    color: #00BFA5;
+    border: 2px solid #00BFA5;
+    box-shadow: 0 0 20px rgba(0, 191, 165, 0.5);
+    transform: scale(1.05);
 }
 
 .btn-social-glass {
@@ -1046,12 +1403,399 @@ footer {
     transform: skew(-10deg);
 }
 
-/* --- SECTION LISTE DES VLOGS --- */
-.vlog-section {
-    background: #111;
-    padding: 60px 30px;
+/* ========================================
+   PAGE À PROPOS - REDESIGN 2026
+   Cinematic Hero, Split Bio, Toolbox
+   ======================================== */
+
+/* --- HERO TYPOGRAPHIQUE --- */
+.hero-about {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Fond subtil animé ou texture */
+.hero-about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.hero-subtitle {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    color: #FA481C;
+    font-size: 1.2rem;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    animation: fadeInDown 1s ease-out;
+}
+
+.hero-title-jumbo {
+    font-family: 'Impact', 'Arial Black', 'Montserrat', sans-serif;
+    font-size: 8rem;
+    font-weight: 900;
+    line-height: 1;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    /* Espacement pour éviter le bug de transparence */
+    margin: 0;
+    animation: zoomIn 1.2s ease-out;
+}
+
+.outline-text {
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.3);
+    color: transparent;
+    transition: all 0.5s ease;
+}
+
+.hero-title-jumbo:hover .outline-text {
+    -webkit-text-stroke: 2px #FA481C;
+    color: rgba(250, 72, 28, 0.1);
+}
+
+.hero-description {
+    font-size: 1.5rem;
+    color: #888;
+    margin-top: 30px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    animation: fadeInUp 1s ease-out 0.5s backwards;
+}
+
+/* Animations simples */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Scroll Indicator */
+.scroll-indicator-about {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    transition: color 0.3s;
+}
+
+.scroll-indicator-about:hover {
+    color: #FA481C;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* --- SECTION BIO SPLIT --- */
+.section-bio {
+    background: #050505;
+    padding: 100px 5%;
+    position: relative;
+    /* Pour sceller avec le hero */
+    box-shadow: 0 -50px 50px #050505;
+}
+
+.bio-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Partie Visuelle (Gauche) */
+.bio-visual {
+    position: relative;
+}
+
+.portrait-frame {
+    position: relative;
+    z-index: 2;
+}
+
+.portrait-frame img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 5px;
+    filter: grayscale(100%) contrast(1.1);
+    transition: all 0.5s ease;
+    display: block;
+}
+
+.portrait-frame:hover img {
+    filter: grayscale(0%) contrast(1);
+}
+
+.frame-accent {
+    position: absolute;
+    top: 20px;
+    left: -20px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #FA481C;
+    z-index: -1;
+    transition: all 0.5s ease;
+}
+
+.portrait-frame:hover .frame-accent {
+    top: 10px;
+    left: -10px;
+}
+
+/* Partie Texte (Droite) */
+.bio-content {
     color: white;
 }
+
+.bio-header {
+    margin-bottom: 40px;
+}
+
+.bio-number {
+    display: block;
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.05);
+    line-height: 0.8;
+}
+
+.bio-header h2 {
+    font-size: 3rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.bio-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ccc;
+    margin-bottom: 40px;
+}
+
+.lead-text {
+    font-size: 1.4rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Bouton téléchargement moderne */
+.btn-modern-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 40px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-modern-download:hover {
+    background: #FA481C;
+    border-color: #FA481C;
+    padding-right: 50px;
+    /* Petit effet d'extension */
+}
+
+/* --- SECTION TOOLBOX (GRILLE) --- */
+.section-toolbox {
+    background: #0a0a0a;
+    padding: 100px 5%;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.toolbox-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-tag {
+    color: #FA481C;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.toolbox-header h2 {
+    font-size: 3rem;
+    color: white;
+    margin: 0;
+}
+
+.toolbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tool-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.tool-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-10px);
+    border-color: rgba(250, 72, 28, 0.3);
+}
+
+.tool-icon {
+    font-size: 2.5rem;
+    color: #FA481C;
+    margin-bottom: 20px;
+}
+
+.tool-card h4 {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.tool-card p {
+    color: #888;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Responsive Apropos */
+@media (max-width: 900px) {
+    .hero-title-jumbo {
+        font-size: 4rem;
+    }
+
+    .bio-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .bio-visual {
+        order: -1;
+        text-align: center;
+    }
+
+    .portrait-frame img {
+        max-width: 100%;
+    }
+
+    .bio-header h2 {
+        font-size: 2.5rem;
+    }
+}
+
+/* --- SECTION LISTE DES VLOGS (Redesign Background) --- */
+.vlog-section {
+    position: relative;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+    padding: 80px 30px;
+    color: white;
+    overflow: hidden;
+}
+
+/* Texture Grain de Film */
+.vlog-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* S'assurer que le contenu est au-dessus du grain */
+.vlog-section .section-header,
+.vlog-section .grille-vlogs {
+    position: relative;
+    z-index: 2;
+}
+
 
 .titre-section {
     font-size: 3rem;
@@ -3267,6 +4011,8 @@ footer {
     padding: 20px 40px;
     scroll-behavior: smooth;
     scrollbar-width: none;
+    cursor: none;
+    /* Cache le curseur par défaut */
 }
 
 .gallery-track::-webkit-scrollbar {

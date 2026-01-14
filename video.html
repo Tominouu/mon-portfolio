@@ -274,7 +274,29 @@
     </footer>
 
     <script>
-        // Navigation par onglets
+        // Switch VIDEO / PHOTO
+        function switchMainView(view) {
+            const btnVideo = document.getElementById('btn-show-video');
+            const btnPhoto = document.getElementById('btn-show-photo');
+            const viewVideo = document.getElementById('view-video');
+            const viewPhoto = document.getElementById('view-photo');
+
+            if (view === 'video') {
+                btnVideo.classList.add('active');
+                btnPhoto.classList.remove('active');
+                viewVideo.style.display = 'block';
+                viewPhoto.style.display = 'none';
+                viewVideo.classList.add('fade-in');
+            } else {
+                btnPhoto.classList.add('active');
+                btnVideo.classList.remove('active');
+                viewPhoto.style.display = 'block';
+                viewVideo.style.display = 'none';
+                viewPhoto.classList.add('fade-in');
+            }
+        }
+
+        // Navigation par onglets (EXISTANT - CONSERVÉ POUR LA PARTIE VIDÉO)
         const tabs = document.querySelectorAll('.nav-tab');
         const contentSections = document.querySelectorAll('.featured-project, .video-section');
 
@@ -386,6 +408,7 @@
         });
     </script>
 
+    <script src="script.js"></script>
 </body>
 
 </html>
