@@ -1970,31 +1970,37 @@ footer {
     }
 }
 
-/* --- CONTENEUR TEXTE VERRE --- */
+/* --- LE CONTENEUR VERRE (Style Intro) --- */
 .glass-intro-box {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.03); /* Fond subtil */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.08);
+    
     max-width: 900px;
-    margin: 60px auto 40px; /* Marge haut/bas */
-    padding: 40px;
+    margin: 60px auto 50px; /* Centré verticalement et horizontalement */
+    padding: 50px 30px;     /* Plus d'espace pour respirer */
     border-radius: 20px;
-    text-align: center;
+    text-align: center;     /* Tout le texte centré */
 }
 
+/* Le texte normal (Blanc & Moderne) */
 .glass-intro-box p {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #e0e0e0;
+    font-size: 1.25rem;     /* Un peu plus gros comme sur ton image */
+    line-height: 1.8;       /* Lignes aérées */
+    color: #ffffff;         /* Blanc pur */
+    font-weight: 400;
+    margin: 0;
 }
 
+/* LE STYLE MAGIQUE (Orange & Italique) */
 .highlight-text {
-    color: #FA481C;
-    font-family: 'Playfair Display', serif;
+    color: #FA481C;         /* Ton Orange */
+    font-family: 'Playfair Display', serif; /* La police "Classe" */
     font-style: italic;
-    font-weight: 700;
+    font-weight: 400;       /* Playfair est déjà assez épaisse */
+    font-size: 1.3rem;      /* Légèrement plus grand pour ressortir */
 }
 
 /* --- VIDEO VIMEO RESPONSIVE --- */
