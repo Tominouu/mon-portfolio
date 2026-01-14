@@ -3,36 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet - Portfolio</title>
+    <title>On s'en Battt - Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<link rel="icon" type="image/png" href="images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
 
     <header class="header-glass">
-    
-    <div class="logo">
-    <a href="index.html">Loznis.view</a>
-</div>
+        <div class="logo">
+            <a href="index.html">Loznis.view</a>
+        </div>
 
-    <nav class="header-center">
-        <ul>
-            <li><a href="index.html#projets">PROJETS</a></li>
-            <li><a href="apropos.html">À PROPOS</a></li>
-        </ul>
-    </nav>
+        <nav class="header-center">
+            <ul>
+                <li><a href="index.html#projets">PROJETS</a></li>
+                <li><a href="apropos.html">À PROPOS</a></li>
+            </ul>
+        </nav>
 
-    <div class="header-right">
-        <a href="cv.html" class="btn-header-cta">
-            Mon CV <i class="fas fa-arrow-right"></i>
-        </a>
-    </div>
-</header>
+        <div class="header-right">
+            <a href="cv.html" class="btn-header-cta">
+                Mon CV <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </header>
 
     <section class="hero-street">
-        
         <video autoplay muted loop playsinline class="video-bg">
             <source src="videos/mix_vlog.mp4" type="video/mp4">
         </video>
@@ -44,14 +42,13 @@
             <p class="sous-titre">VLOGS • LIFESTYLE • NO BULLSH*T</p>
             
             <div class="social-actions">
-    <a href="https://youtube.com/@onsenbattt?si=J4oWAafrK6fLGgAH" target="_blank" class="btn-social-glass yt">
-        <i class="fab fa-youtube"></i> Chaîne YouTube
-    </a>
-    
-    <a href="https://www.instagram.com/on_s.en_battt/" target="_blank" class="btn-social-glass insta">
-        <i class="fab fa-instagram"></i> Instagram
-    </a>
-</div>
+                <a href="https://youtube.com/@onsenbattt?si=J4oWAafrK6fLGgAH" target="_blank" class="btn-social-glass yt">
+                    <i class="fab fa-youtube"></i> Chaîne YouTube
+                </a>
+                <a href="https://www.instagram.com/on_s.en_battt/" target="_blank" class="btn-social-glass insta">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+            </div>
         </div>
     </section>
 
@@ -59,7 +56,6 @@
         <h3 class="titre-section">DERNIERS ÉPISODES</h3>
         
         <div class="grille-vlogs">
-            
             <div class="card-vlog">
                 <div class="thumb-wrapper">
                     <img src="images/miniature_vlog1.jpg" alt="Vlog 1">
@@ -92,125 +88,76 @@
                     <a href="https://youtu.be/g3PM8hIDo40?si=ofSE6wM8xIOAGXPI" target="_blank" class="lien-vlog">REGARDER <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-
         </div>
     </section>
 
     <section class="teasers-section">
-    <h3 class="titre-section">TEASERS</h3> 
-    
-    <div class="video-grid">
-    
-    <div class="vimeo-wrapper">
-        <iframe src="https://player.vimeo.com/video/1154284120?title=0&byline=0&portrait=0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-    </div>
-
-    <div class="vimeo-wrapper">
-        <iframe src="https://player.vimeo.com/video/ID_VIDEO_2?title=0&byline=0&portrait=0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-    </div>
-
-    <div class="vimeo-wrapper">
-        <iframe src="https://player.vimeo.com/video/ID_VIDEO_3?title=0&byline=0&portrait=0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-    </div>
-
-    </div>
-</section>
-
-<div id="video-modal" class="modal-overlay">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <div class="iframe-container">
-            <video id="lecteur-local" controls>
-                <source src="" type="video/mp4">
-                Votre navigateur ne supporte pas la vidéo.
-            </video>
-        </div>
-    </div>
-</div>
-
-    
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
         
-        // --- GESTION DU MODAL VIDÉO ---
-        const modal = document.getElementById('video-modal');
-        const lecteur = document.getElementById('lecteur-local');
-        const closeBtn = document.querySelector('.close-btn');
-        const items = document.querySelectorAll('.item-video'); // Cible tes teasers
-
-        // A. OUVRIR LA VIDÉO
-        items.forEach(item => {
-            item.addEventListener('click', function() {
-                const videoSrc = this.getAttribute('data-video-src');
-                if (videoSrc) {
-                    lecteur.src = videoSrc;       
-                    modal.classList.add('open');  
-                    lecteur.play();               
-                }
-            });
-        });
-
-        // B. FERMER LE MODAL
-        function fermerModal() {
-            if(modal) modal.classList.remove('open');
-            if(lecteur) {
-                lecteur.pause();
-                lecteur.src = "";
-            }
-        }
-
-        if (closeBtn) closeBtn.addEventListener('click', fermerModal);
-
-        if (modal) {
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) fermerModal();
-            });
-        }
-    });
-</script>
-
-<footer class="footer-glass">
-    <div class="footer-content">
-        
-        <h2 class="footer-title">PRÊT À CRÉER ?</h2>
-        
-        <div class="availability-badge">
-            <span class="dot-rec">●</span> RECHERCHE STAGE : AVRIL - JUILLET <br>
-            <span class="sub-availability">(Possibilité Alternance)</span>
+        <div class="glass-intro-box">
+            <p>
+                Bienvenue dans l'aventure. <strong>On s'en Battt</strong>, c'est le récit brut d'une bande de potes 
+                qui parcourt le monde. Pas de script, pas de filtre, juste de l'
+                <span class="highlight-text">authenticité pure</span>.
+                <br><br>
+                À travers ces vlogs, je capture l'instant tel qu'il est : les galères, les rires et ces moments 
+                suspendus qui font la beauté du voyage. C'est une invitation à 
+                <span class="highlight-text">vivre l'instant présent</span> et à découvrir le monde sans artifice.
+            </p>
         </div>
 
-        <p class="footer-subtitle">Déconnade</p>
+        <h3 class="titre-section">TEASER OFFICIEL</h3>
 
-        <div class="contact-info">
-            <a href="mailto:lorenzoleroho56@gmail.com" class="contact-link">lorenzoleroho56@gmail.com</a>
-            <span class="separator">|</span>
-            <a href="tel:+33622359306" class="contact-link">06 22 35 93 06</a>
+        <div class="vimeo-container-unique">
+            <div class="vimeo-wrapper">
+                <iframe 
+                    src="https://player.vimeo.com/video/1154284120?title=0&byline=0&portrait=0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
         </div>
 
-        <div class="footer-social">
-            <a href="mailto:lorenzoleroho56@gmail.com" class="social-icon" aria-label="Email">
-                <i class="fas fa-envelope"></i>
-            </a>
-            <a href="https://www.instagram.com/loznis.view/" target="_blank" class="social-icon" aria-label="Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.youtube.com/@Onsenbattt" target="_blank" class="social-icon" aria-label="YouTube">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/lorenzo-le-roho-95a2612b4/" target="_blank" class="social-icon" aria-label="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
+    </section>
+
+    <footer class="footer-glass">
+        <div class="footer-content">
+            
+            <h2 class="footer-title">PRÊT À CRÉER ?</h2>
+            
+            <div class="availability-badge">
+                <span class="dot-rec">●</span> RECHERCHE STAGE : AVRIL - JUILLET <br>
+                <span class="sub-availability">(Possibilité Alternance)</span>
+            </div>
+    
+            <p class="footer-subtitle">Déconnade</p>
+    
+            <div class="contact-info">
+                <a href="mailto:lorenzoleroho56@gmail.com" class="contact-link">lorenzoleroho56@gmail.com</a>
+                <span class="separator">|</span>
+                <a href="tel:+33622359306" class="contact-link">06 22 35 93 06</a>
+            </div>
+    
+            <div class="footer-social">
+                <a href="mailto:lorenzoleroho56@gmail.com" class="social-icon" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.instagram.com/loznis.view/" target="_blank" class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com/@Onsenbattt" target="_blank" class="social-icon" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/lorenzo-le-roho-95a2612b4/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+    
+            <div class="footer-bottom">
+                <p>&copy; 2026 LORENZO LE ROHO. Tous droits réservés.</p>
+            </div>
+    
         </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2026 LORENZO LE ROHO. Tous droits réservés à moi.</p>
-        </div>
-
-    </div>
-</footer>
-
-
+    </footer>
 
 </body>
 </html>
