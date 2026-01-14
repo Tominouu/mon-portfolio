@@ -1972,7 +1972,7 @@ footer {
 
 /* --- LE CONTENEUR VERRE (Style Intro) --- */
 .glass-intro-box {
-    background: rgba(255, 255, 255, 0.03); /* Fond subtil */
+    background: rgba(67, 59, 59, 0.03); /* Fond subtil */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.08);
