@@ -1,0 +1,4346 @@
+/* 1. RÉGLAGES GÉNÉRAUX */
+body {
+    background-color: #000000;
+    /* Fond gris très foncé */
+    color: white;
+    /* Texte blanc */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   LUEURS FLOTTANTES (Background Ambiance)
+   ========================================= */
+
+.floating-glows {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.floating-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* Orbe 1 - Orange principal */
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #FA481C 0%, transparent 70%);
+    top: 10%;
+    left: -10%;
+    animation: float1 20s infinite alternate;
+}
+
+/* Orbe 2 - Orange plus petit */
+.orb-2 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #ff6b35 0%, transparent 70%);
+    top: 60%;
+    right: -5%;
+    animation: float2 25s infinite alternate;
+}
+
+/* Orbe 3 - Rouge subtil */
+.orb-3 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, #d63031 0%, transparent 70%);
+    bottom: 10%;
+    left: 30%;
+    animation: float3 30s infinite alternate;
+}
+
+/* Animations de déplacement aléatoire */
+@keyframes float1 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate(30vw, 20vh) scale(1.1);
+    }
+
+    50% {
+        transform: translate(50vw, 10vh) scale(0.9);
+    }
+
+    75% {
+        transform: translate(20vw, 40vh) scale(1.05);
+    }
+
+    100% {
+        transform: translate(60vw, 30vh) scale(1);
+    }
+}
+
+@keyframes float2 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate(-40vw, -20vh) scale(0.9);
+    }
+
+    50% {
+        transform: translate(-20vw, 15vh) scale(1.1);
+    }
+
+    75% {
+        transform: translate(-50vw, -30vh) scale(1);
+    }
+
+    100% {
+        transform: translate(-30vw, 10vh) scale(0.95);
+    }
+}
+
+@keyframes float3 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate(20vw, -30vh) scale(1.05);
+    }
+
+    50% {
+        transform: translate(-15vw, -20vh) scale(0.9);
+    }
+
+    75% {
+        transform: translate(30vw, -10vh) scale(1.1);
+    }
+
+    100% {
+        transform: translate(-10vw, -40vh) scale(1);
+    }
+}
+
+/* --- HEADER FLOTTANT (GLASSMORPHISM) --- */
+
+header.header-glass {
+    position: fixed;
+    /* Le menu reste fixé en haut quand on scrolle */
+    top: 20px;
+    /* Petit espace au-dessus pour l'effet flottant */
+    left: 50%;
+    transform: translateX(-50%);
+    /* Pour centrer parfaitement */
+
+    width: 90%;
+    /* Largeur de la barre */
+    max-width: 1000px;
+    /* Ne devient pas trop large sur grand écran */
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 30px;
+    /* Espace intérieur */
+
+    /* L'EFFET VERRE (Magique !) */
+    background: rgba(255, 255, 255, 0.05);
+    /* Fond blanc très transparent */
+    backdrop-filter: blur(15px);
+    /* Le flou derrière la barre */
+    -webkit-backdrop-filter: blur(15px);
+    /* Pour Safari */
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Bordure fine subtile */
+    border-radius: 50px;
+    /* La forme "Pilule" très arrondie */
+
+    z-index: 1000;
+    /* Assure que le menu est toujours au-dessus de tout */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    /* Ombre portée pour le relief */
+}
+
+/* 1. Logo */
+.header-left .logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-family: 'Arial', sans-serif;
+    /* Ou ta police Playfair si tu préfères */
+}
+
+/* 2. Menu Central */
+.header-center ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header-center a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.header-center a:hover {
+    color: white;
+}
+
+/* 3. Bouton Droite (Le bouton vert de ton exemple, adapté) */
+.btn-header-cta {
+    background-color: #FA481C;
+    /* Couleur Or (ou vert #4caf50 si tu veux copier l'image) */
+    color: black;
+    /* Texte noir pour le contraste */
+    padding: 10px 25px;
+    border-radius: 30px;
+    /* Bouton rond */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: transform 0.3s, background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* Espace entre texte et flèche */
+}
+
+.btn-header-cta:hover {
+    background-color: white;
+    transform: scale(1.05);
+    /* Petit zoom au survol */
+}
+
+/* PETIT AJUSTEMENT POUR QUE LE CONTENU NE SOIT PAS CACHÉ SOUS LE MENU */
+/* Ajoute ça au body ou à ta première section si besoin */
+body {
+    padding-top: 0;
+    /* On laisse à 0 car le menu est transparent, c'est joli que le contenu passe dessous */
+}
+
+/* Le Logo */
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Le Menu (La liste) */
+nav ul {
+    display: flex;
+    /* Met les puces à l'horizontale */
+    list-style: none;
+    /* Enlève les points devant les listes */
+    gap: 30px;
+    /* Espace entre Projets, Contact et CV */
+    margin: 0;
+    padding: 0;
+}
+
+/* Les Liens du menu */
+nav a {
+    text-decoration: none;
+    color: #aaaaaa;
+    /* Gris clair */
+    font-size: 1rem;
+    transition: color 0.3s;
+    /* Animation douce au survol */
+}
+
+/* Quand on passe la souris dessus */
+nav a:hover {
+    color: white;
+    /* Devient blanc */
+}
+
+/* Bouton CV (Optionnel : pour le faire ressortir) */
+nav a[href*="cv"] {
+    border: 1px solid white;
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+nav a[href*="cv"]:hover {
+    background-color: white;
+    color: #1a1a1a;
+}
+
+/* --- SECTION INTRO (STYLE EDITORIAL) --- */
+.intro {
+    padding: 80px 20px;
+    /* De l'espace en haut et en bas */
+    max-width: 800px;
+    /* Pour ne pas que le texte soit trop large sur les grands écrans */
+    margin: 0 auto;
+    /* Centre le bloc au milieu de la page */
+    text-align: center;
+}
+
+/* 1. La petite ligne "À PROPOS" */
+.intro-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    /* Espace entre les traits et le texte */
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #aaaaaa;
+}
+
+.ligne {
+    height: 1px;
+    width: 40px;
+    /* Longueur du trait */
+    background-color: #FA481C;
+    /* Couleur Or */
+    display: block;
+}
+
+/* 2. Le texte principal */
+.intro-texte p {
+    font-size: 1.8rem;
+    /* Gros texte comme sur l'image */
+    line-height: 1.5;
+    /* Espace entre les lignes pour aérer */
+    margin-bottom: 20px;
+    color: white;
+    /* Texte de base blanc */
+}
+
+/* 3. L'effet "Gold Italic" (Le style de l'image) */
+.gold-italic {
+    font-family: 'Playfair Display', serif;
+    /* La police Google qu'on a ajoutée */
+    font-style: italic;
+    color: #FA481C;
+    /* Couleur Or (Gold) */
+    font-weight: 400;
+}
+
+/* 5. LE BAS DE PAGE */
+footer {
+    padding: 40px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* --- NOUVEAU PRELOADER --- */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    /* Fond noir profond */
+    z-index: 9999;
+    /* Au-dessus de tout le reste */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* La transition de disparition */
+    opacity: 1;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s;
+}
+
+/* Le contenu (Texte + Ligne) */
+.loader-content {
+    text-align: center;
+    color: white;
+}
+
+.loader-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    /* Espacement cinéma */
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+/* La petite ligne orange qui s'agrandit */
+.loader-line {
+    width: 0%;
+    height: 3px;
+    background-color: #FA481C;
+    /* Ton orange */
+    margin: 0 auto;
+    animation: line-grow 2.5s ease-out forwards;
+}
+
+/* Animation de la ligne */
+@keyframes line-grow {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100px;
+    }
+}
+
+/* Classe pour cacher le preloader */
+#preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    /* Permet de cliquer sur le site en dessous */
+}
+
+/* --- ANIMATION PRELOADER (LUEUR & GRAIN) --- */
+
+/* Sécurité pour que rien ne déborde */
+#preloader {
+    overflow: hidden;
+    /* Le reste (background black, z-index...) reste comme avant */
+}
+
+/* 1. LA LUEUR ORANGE (L'ORBE) */
+.neon-orb {
+    position: absolute;
+    width: 300px;
+    /* Taille de la tache */
+    height: 300px;
+    background: radial-gradient(circle, rgba(250, 72, 28, 0.6) 0%, rgba(250, 72, 28, 0) 70%);
+    border-radius: 50%;
+    /* Rond parfait */
+    filter: blur(40px);
+    /* Très flou pour l'effet "glow" */
+    opacity: 20;
+    /* Commence invisible */
+    z-index: 1;
+    /* Derrière le texte */
+
+    /* L'animation de déplacement */
+    animation: move-glow 3s ease-in-out forwards;
+}
+
+/* 2. LE TEXTE (Doit passer devant la lueur) */
+.loader-content {
+    position: relative;
+    z-index: 10;
+    /* Devant tout le monde */
+}
+
+/* 3. L'ANIMATION DE MOUVEMENT */
+/* La lueur part du bas gauche et monte vers le centre en s'allumant */
+@keyframes move-glow {
+    0% {
+        top: 110%;
+        /* En bas */
+        left: 20%;
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0, 5;
+        /* S'allume très vite à fond ! */
+    }
+
+    80% {
+        opacity: 1;
+        /* Reste À FOND presque jusqu'au bout */
+    }
+
+    100% {
+        top: 15%;
+        /* En haut */
+        left: 60%;
+        transform: scale(1.5);
+        opacity: 0;
+        /* Disparaît brutalement à la fin */
+    }
+}
+
+/* 4. LE PETIT BONUS : EFFET GRAIN (NOISE) */
+/* Ajoute une texture granuleuse comme sur une pellicule */
+.noise-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+    opacity: 0.5;
+    z-index: 5;
+    /* Devant la lueur, derrière le texte */
+    pointer-events: none;
+}
+
+
+
+
+
+/* --- SECTION PROJETS (GRILLE 2x2 OVERLAY) --- */
+
+.section-projets {
+    padding: 60px 40px;
+    max-width: 1200px;
+    /* On garde une largeur raisonnable pour que les images soient belles */
+    margin: 0 auto;
+}
+
+/* La Grille 2 colonnes */
+.grille-cinema {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 colonnes de taille égale */
+    gap: 30px;
+    /* Espace entre les blocs */
+    margin-top: 40px;
+}
+
+/* LE CADRE NÉON (Conteneur de l'image) */
+.cadre-image {
+    position: relative;
+    overflow: hidden;
+    /* ESSENTIEL : Coupe l'image qui zoome pour qu'elle reste dans les coins */
+    border-radius: 20px;
+    /* Coins arrondis */
+
+    /* L'effet Néon (Vert ici, change les chiffres RGB pour changer la couleur) */
+    border: 1px solid rgba(0, 0, 0, );
+    box-shadow: 0 0 15px rgba(250, 72, 28, 0.9);
+    /* La lueur externe */
+
+    /* Transition douce si tu veux que le néon s'intensifie au survol */
+    transition: all 0.3s ease;
+}
+
+
+/* L'Image */
+.cadre-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    /* Zoom fluide */
+    display: block;
+}
+
+/* LE BLOC TEXTE (Caché par défaut) */
+.infos-hover {
+    position: absolute;
+    /* Se place par dessus l'image */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    /* Fond noir semi-transparent */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centre verticalement */
+    align-items: center;
+    /* Centre horizontalement */
+    opacity: 0;
+    /* INVISIBLE par défaut */
+    transition: opacity 0.4s ease;
+    /* Apparition douce */
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Le Titre du projet */
+.infos-hover h3 {
+    font-family: 'Playfair Display', serif;
+    /* Rappel de ta police stylée */
+    font-style: italic;
+    color: #FA481C;
+    /* Or */
+    font-size: 2.5rem;
+    /* Très gros */
+    margin: 0 0 10px 0;
+    transform: translateY(20px);
+    /* Le texte part d'un peu plus bas */
+    transition: transform 0.4s ease;
+}
+
+/* La catégorie */
+.infos-hover .categorie {
+    color: white;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transform: translateY(20px);
+    transition: transform 0.4s ease 0.1s;
+    /* Petit délai pour effet cascade */
+}
+
+/* --- ANIMATIONS AU SURVOL (HOVER) --- */
+
+/* 1. On montre le texte */
+.projet-item:hover .infos-hover {
+    opacity: 1;
+    /* Devient visible */
+}
+
+/* 2. Le texte remonte à sa place */
+.projet-item:hover .infos-hover h3,
+.projet-item:hover .infos-hover .categorie {
+    transform: translateY(0);
+}
+
+/* 3. L'image zoome derrière */
+.projet-item:hover img {
+    transform: scale(1.1);
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    .grille-cinema {
+        grid-template-columns: 1fr;
+        /* 1 seule colonne sur téléphone */
+    }
+
+    .infos-hover h3 {
+        font-size: 2rem;
+    }
+}
+
+/* --- STYLE PAGE LOZNIS (ONCLETS & GRILLE VIDÉO) --- */
+
+/* 1. Boutons de choix */
+.loznis-choix {
+    text-align: center;
+    padding: 120px 20px 60px;
+}
+
+.titre-projet {
+    font-size: 3rem;
+    margin-bottom: 40px;
+    letter-spacing: 5px;
+}
+
+.conteneur-boutons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* --- BOUTONS STYLE GLASS (UNIVERSEL) --- */
+
+/* --- LES BOUTONS VERRE (Style de base) --- */
+.btn-glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ccc;
+    text-decoration: none;
+    /* Pas de soulignement */
+
+    padding: 12px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Au survol */
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    color: #FA481C;
+    border-color: #FA481C;
+}
+
+/* --- L'ÉTAT ACTIF (Bouton sélectionné) --- */
+/* Important : j'ai renommé ".actif" en ".active" */
+.btn-glass.active {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #FA481C;
+    /* TA COULEUR ORANGE */
+    color: #ffffff;
+    /* J'ai réparé la ligne cassée ici 👇 */
+    box-shadow: 0 0 20px rgba(250, 72, 28, 0.4);
+    /* Lueur orange */
+}
+
+/* 2. La Grille Vidéo 3x3 */
+.grille-3x3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 colonnes */
+    gap: 10px;
+    /* Petit espace entre les vidéos */
+    max-width: 1400px;
+    margin: 0 auto 100px auto;
+    padding: 0 20px;
+}
+
+.item-video {
+    position: relative;
+    aspect-ratio: 16/9;
+    /* Format vidéo */
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.item-video img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    opacity: 0.8;
+}
+
+/* L'icône PLAY au milieu */
+.overlay-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: white;
+    opacity: 0;
+    /* Caché par défaut */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Effet au survol */
+.item-video:hover img {
+    transform: scale(1.1);
+    /* Zoom image */
+    opacity: 0.4;
+    /* Assombrit l'image */
+}
+
+.item-video:hover .overlay-play {
+    opacity: 1;
+    /* Affiche le bouton play */
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* =========================================
+   STYLE DU LECTEUR YOUTUBE (VERSION FINALE)
+   ========================================= */
+
+/* 1. Le fond noir (Overlay) */
+.modal-overlay {
+    display: none;
+    /* Caché par défaut (et pas opacity:0 !) */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    /* Noir profond */
+    z-index: 10000;
+    /* Au-dessus de tout le reste */
+    justify-content: center;
+    align-items: center;
+}
+
+/* C'est cette classe que le JS ajoute pour afficher */
+.modal-overlay.active {
+    display: flex !important;
+    /* Force l'affichage */
+}
+
+/* 2. Le conteneur de la vidéo */
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    /* Largeur max */
+    background: #000;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(250, 72, 28, 0.2);
+    /* Lueur orange */
+}
+
+/* 3. Le ratio 16/9ème (CRUCIAL pour voir l'image) */
+.iframe-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    /* Ratio 16:9 */
+    height: 0;
+}
+
+/* On cible bien l'IFRAME (YouTube) et non 'video' (Local) */
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+    /* Arrondir aussi la vidéo */
+}
+
+/* 4. La croix de fermeture */
+.close-btn {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 10001;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.close-btn:hover {
+    color: #FA481C;
+    transform: rotate(90deg);
+    /* Petite animation stylée */
+}
+
+/* Mobile : 1 colonne */
+@media (max-width: 768px) {
+    .grille-3x3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- SECTION HERO NEON --- */
+
+/* --- SECTION HERO NEON (AVEC FOND SPOTLIGHT) --- */
+
+.neon-screen {
+    height: 100vh;
+    /* Prend tout l'écran au début */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* On garde ton fond spotlight */
+    background: radial-gradient(circle at center, #FA481C 0%, #000000 80%);
+
+    /* ICI LE CHANGEMENT IMPORTANT */
+    position: relative;
+    /* Au lieu de fixed */
+    /* On a retiré top:0, left:0 et z-index: -1 */
+
+    width: 100%;
+    overflow: hidden;
+    /* Sécurité pour ne pas que ça déborde */
+}
+
+
+
+
+/* --- CAROUSEL PHOTO (STYLE VERRE) --- */
+
+.carousel-container {
+    max-width: 1100px;
+    margin: 0 auto 100px auto;
+    /* Centré avec de l'espace en bas */
+    text-align: center;
+    /* Pour centrer le cadre et les boutons */
+    padding: 20px;
+}
+
+/* --- STYLE CARROUSEL PHOTO --- */
+.carousel-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.glass-frame {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.glass-frame img {
+    max-width: 100%;
+    max-height: 70vh;
+    border-radius: 10px;
+    display: block;
+    /* Transition "Smooth" : Opacité + Échelle */
+    transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    transform: scale(1);
+}
+
+.glass-frame img.hidden {
+    opacity: 0;
+    transform: scale(0.96);
+}
+
+.carousel-controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav-btn {
+    font-size: 1.5rem;
+    padding: 10px 25px;
+}
+
+/* --- ANIMATION DE TRANSITION (FADE IN UP) --- */
+
+/* La classe qu'on va ajouter via Javascript */
+.fade-in-up {
+    animation: apparitionDouce 0.8s ease forwards;
+    /* Durée 0.8s, fluide */
+}
+
+/* La recette de l'animation */
+@keyframes apparitionDouce {
+    0% {
+        opacity: 0;
+        /* Invisible */
+        transform: translateY(40px);
+        /* Décalé vers le bas de 40px */
+    }
+
+    100% {
+        opacity: 1;
+        /* Visible */
+        transform: translateY(0);
+        /* À sa place normale */
+    }
+}
+
+/* --- PAGE ON S'EN BATTT (VLOG MODE) --- */
+
+/* Ajustement du titre */
+.sous-titre {
+    font-size: 1.5rem;
+    letter-spacing: 8px;
+    /* Très espacé */
+    margin-bottom: 50px;
+    font-weight: bold;
+    color: #ddd;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+/* CONTAINER BOUTONS */
+.social-actions {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* --- BOUTONS RÉSEAUX EN VERRE (STYLE LOZNIS) --- */
+.social-actions {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    /* Espace en bas pour séparer de la section suivante */
+}
+
+/* ========================================
+   HERO CINÉMATIQUE - ON S'EN BATTT
+   ======================================== */
+
+.street-content.cinematic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+}
+
+.hero-tag-street {
+    display: inline-block;
+    background: rgba(250, 72, 28, 0.15);
+    border: 1px solid rgba(250, 72, 28, 0.5);
+    color: #FA481C;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.titre-hero-big {
+    font-size: 5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    letter-spacing: 15px;
+    margin: 20px 0;
+    text-transform: uppercase;
+    text-shadow: 0 0 60px rgba(250, 72, 28, 0.3);
+}
+
+.tagline-street {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1rem;
+    color: #aaa;
+    letter-spacing: 2px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dot-separator {
+    color: #FA481C;
+    font-size: 1.5rem;
+}
+
+.social-actions.glow-buttons .btn-social-glass {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.social-actions.glow-buttons .btn-social-glass.yt:hover {
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.5);
+}
+
+.social-actions.glow-buttons .btn-social-glass.insta:hover {
+    box-shadow: 0 0 40px rgba(225, 48, 108, 0.5);
+}
+
+.scroll-indicator-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-top: 40px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    transition: color 0.3s;
+}
+
+.scroll-indicator-hero:hover {
+    color: #FA481C;
+}
+
+.scroll-indicator-hero i {
+    font-size: 1.2rem;
+}
+
+/* Responsive Hero */
+@media (max-width: 768px) {
+    .titre-hero-big {
+        font-size: 2.5rem;
+        letter-spacing: 8px;
+    }
+
+    .tagline-street {
+        font-size: 0.9rem;
+        gap: 10px;
+    }
+
+    .hero-tag-street {
+        font-size: 0.75rem;
+        padding: 8px 18px;
+    }
+}
+
+/* ========================================
+   HERO CINÉMATIQUE - I CLEAN MY SEA
+   ======================================== */
+
+.hero-icms {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 80px;
+    padding-bottom: 0;
+}
+
+/* Section sans cassure visuelle */
+.section-seamless {
+    position: relative;
+    padding: 40px 20px 60px;
+    background: #0a0a0a;
+    margin-top: -1px;
+}
+
+.hero-background-icms {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradient stops at black well before the end to ensure seamless transition */
+    background: linear-gradient(180deg, #0a0a0a 0%, #051a1a 40%, #051a1a 60%, #0a0a0a 98%, #0a0a0a 100%);
+}
+
+.hero-gradient-icms {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(0, 150, 136, 0.15) 0%, transparent 60%);
+}
+
+.hero-content-icms {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.hero-tag-icms {
+    display: inline-block;
+    background: rgba(0, 150, 136, 0.15);
+    border: 1px solid rgba(0, 150, 136, 0.5);
+    color: #00BFA5;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.titre-hero-icms {
+    font-size: 4.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    letter-spacing: 10px;
+    margin: 20px 0;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #ffffff 0%, #00BFA5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 60px rgba(0, 150, 136, 0.3);
+}
+
+.tagline-icms {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1rem;
+    color: #aaa;
+    letter-spacing: 2px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dot-separator-icms {
+    color: #00BFA5;
+    font-size: 1.5rem;
+}
+
+.scroll-indicator-icms {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-top: 40px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    transition: color 0.3s;
+}
+
+.scroll-indicator-icms:hover {
+    color: #00BFA5;
+}
+
+/* Responsive Hero ICMS */
+@media (max-width: 768px) {
+    .titre-hero-icms {
+        font-size: 2rem;
+        letter-spacing: 5px;
+    }
+
+    .tagline-icms {
+        font-size: 0.9rem;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .dot-separator-icms {
+        display: none;
+    }
+
+    .hero-tag-icms {
+        font-size: 0.75rem;
+        padding: 8px 18px;
+    }
+}
+
+/* ========================================
+   THÈME OCÉAN - I CLEAN MY SEA
+   Override des couleurs pour toute la page
+   ======================================== */
+
+.theme-ocean .highlight-text {
+    color: #00BFA5;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+}
+
+.theme-ocean .section-line {
+    background: linear-gradient(90deg, transparent, rgba(0, 191, 165, 0.5), transparent);
+}
+
+.theme-ocean .section-title .highlight-text {
+    color: #00BFA5;
+}
+
+/* Glass intro box */
+.theme-ocean .glass-intro-box {
+    border: 1px solid rgba(0, 191, 165, 0.3);
+    box-shadow: 0 0 30px rgba(0, 191, 165, 0.1);
+}
+
+.theme-ocean .glass-intro-box:hover {
+    box-shadow: 0 0 50px rgba(0, 191, 165, 0.2);
+    border-color: rgba(0, 191, 165, 0.5);
+}
+
+/* Slideshow container */
+.theme-ocean .slideshow-glass-container {
+    border: 1px solid rgba(0, 191, 165, 0.3);
+}
+
+/* Slideshow arrows */
+.theme-ocean .slide-arrow:hover {
+    background: #00BFA5;
+    border-color: #00BFA5;
+    box-shadow: 0 0 20px rgba(0, 191, 165, 0.5);
+}
+
+/* Slideshow dots */
+.theme-ocean .slide-dots .dot.active {
+    background: #00BFA5;
+    box-shadow: 0 0 10px rgba(0, 191, 165, 0.5);
+}
+
+.theme-ocean .slide-dots .dot:hover {
+    background: rgba(0, 191, 165, 0.5);
+}
+
+/* Bouton Instagram */
+.theme-ocean .btn-docu {
+    background: #00BFA5;
+    box-shadow: 0 4px 20px rgba(0, 191, 165, 0.3);
+}
+
+.theme-ocean .btn-docu:hover {
+    background: transparent;
+    border: 2px solid #00BFA5;
+    box-shadow: 0 0 30px rgba(0, 191, 165, 0.5);
+}
+
+/* Footer pour ICMS */
+.theme-ocean .footer-glass {
+    border-top: 1px solid rgba(0, 191, 165, 0.2);
+}
+
+.theme-ocean .availability-badge {
+    background: rgba(0, 191, 165, 0.1);
+    border-color: #00BFA5;
+    color: #00BFA5;
+}
+
+.theme-ocean .dot-rec {
+    color: #00BFA5;
+    text-shadow: 0 0 10px #00BFA5;
+}
+
+.theme-ocean .contact-link:hover {
+    color: #00BFA5;
+}
+
+.theme-ocean .social-icon:hover {
+    color: #00BFA5;
+    box-shadow: 0 0 20px rgba(0, 191, 165, 0.5);
+    border-color: #00BFA5;
+}
+
+/* Header button for ICMS */
+.theme-ocean .btn-header-cta {
+    background-color: #00BFA5;
+    box-shadow: 0 4px 15px rgba(0, 191, 165, 0.3);
+    border: 2px solid transparent;
+    /* Prevents layout shift on hover */
+    transition: all 0.3s ease;
+}
+
+.theme-ocean .btn-header-cta:hover {
+    background: transparent;
+    color: #00BFA5;
+    border: 2px solid #00BFA5;
+    box-shadow: 0 0 20px rgba(0, 191, 165, 0.5);
+    transform: scale(1.05);
+}
+
+.btn-social-glass {
+    /* La base Verre */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+
+    /* Forme et Taille */
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 50px;
+
+    /* ALIGNEMENT (C'est ici que ça se joue !) */
+    display: inline-flex;
+    justify-content: center;
+    /* <--- C'EST LA LIGNE AJOUTÉE POUR CENTRER */
+    align-items: center;
+    /* Centre verticalement */
+    gap: 15px;
+    /* Espace entre l'icône et le texte */
+
+    transition: all 0.3s ease;
+    min-width: 250px;
+    /* Optionnel : assure une largeur mini pour l'équilibre */
+}
+
+/* EFFET SURVOL YOUTUBE (Lueur Rouge) */
+.btn-social-glass.yt:hover {
+    background: rgba(255, 0, 0, 0.2);
+    /* Fond rouge transparent */
+    border-color: #FF0000;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+    /* Le néon rouge */
+    transform: translateY(-5px);
+}
+
+/* EFFET SURVOL INSTA (Lueur Rose/Violet) */
+.btn-social-glass.insta:hover {
+    background: rgba(225, 48, 108, 0.2);
+    /* Fond rose transparent */
+    border-color: #E1306C;
+    box-shadow: 0 0 30px rgba(225, 48, 108, 0.4);
+    /* Le néon rose */
+    transform: translateY(-5px);
+}
+
+/* Spécifique YouTube (Rouge au survol) */
+.btn-yt {
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.btn-yt:hover {
+    background: #FF0000;
+    border-color: #FF0000;
+    transform: skew(-10deg);
+    /* Petit effet penché dynamique */
+}
+
+/* Spécifique Insta (Dégradé au survol) */
+.btn-insta {
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.btn-insta:hover {
+    background: #E1306C;
+    border-color: #E1306C;
+    transform: skew(-10deg);
+}
+
+/* ========================================
+   PAGE À PROPOS - REDESIGN 2026
+   Cinematic Hero, Split Bio, Toolbox
+   ======================================== */
+
+/* --- HERO TYPOGRAPHIQUE --- */
+.hero-about {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Fond subtil animé ou texture */
+.hero-about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.hero-subtitle {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    color: #FA481C;
+    font-size: 1.2rem;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    animation: fadeInDown 1s ease-out;
+}
+
+.hero-title-jumbo {
+    font-family: 'Impact', 'Arial Black', 'Montserrat', sans-serif;
+    font-size: 8rem;
+    font-weight: 900;
+    line-height: 1;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    /* Espacement pour éviter le bug de transparence */
+    margin: 0;
+    animation: zoomIn 1.2s ease-out;
+}
+
+.outline-text {
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.3);
+    color: transparent;
+    transition: all 0.5s ease;
+}
+
+.hero-title-jumbo:hover .outline-text {
+    -webkit-text-stroke: 2px #FA481C;
+    color: rgba(250, 72, 28, 0.1);
+}
+
+.hero-description {
+    font-size: 1.5rem;
+    color: #888;
+    margin-top: 30px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    animation: fadeInUp 1s ease-out 0.5s backwards;
+}
+
+/* Animations simples */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Scroll Indicator */
+.scroll-indicator-about {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    transition: color 0.3s;
+}
+
+.scroll-indicator-about:hover {
+    color: #FA481C;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* --- SECTION BIO SPLIT --- */
+.section-bio {
+    background: #050505;
+    padding: 100px 5%;
+    position: relative;
+    /* Pour sceller avec le hero */
+    box-shadow: 0 -50px 50px #050505;
+}
+
+.bio-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Partie Visuelle (Gauche) */
+.bio-visual {
+    position: relative;
+}
+
+.portrait-frame {
+    position: relative;
+    z-index: 2;
+}
+
+.portrait-frame img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 5px;
+    filter: grayscale(100%) contrast(1.1);
+    transition: all 0.5s ease;
+    display: block;
+}
+
+.portrait-frame:hover img {
+    filter: grayscale(0%) contrast(1);
+}
+
+.frame-accent {
+    position: absolute;
+    top: 20px;
+    left: -20px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #FA481C;
+    z-index: -1;
+    transition: all 0.5s ease;
+}
+
+.portrait-frame:hover .frame-accent {
+    top: 10px;
+    left: -10px;
+}
+
+/* Partie Texte (Droite) */
+.bio-content {
+    color: white;
+}
+
+.bio-header {
+    margin-bottom: 40px;
+}
+
+.bio-number {
+    display: block;
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.05);
+    line-height: 0.8;
+}
+
+.bio-header h2 {
+    font-size: 3rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.bio-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ccc;
+    margin-bottom: 40px;
+}
+
+.lead-text {
+    font-size: 1.4rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Bouton téléchargement moderne */
+.btn-modern-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 40px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-modern-download:hover {
+    background: #FA481C;
+    border-color: #FA481C;
+    padding-right: 50px;
+    /* Petit effet d'extension */
+}
+
+/* --- SECTION TOOLBOX (GRILLE) --- */
+.section-toolbox {
+    background: #0a0a0a;
+    padding: 100px 5%;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.toolbox-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-tag {
+    color: #FA481C;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.toolbox-header h2 {
+    font-size: 3rem;
+    color: white;
+    margin: 0;
+}
+
+.toolbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tool-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.tool-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-10px);
+    border-color: rgba(250, 72, 28, 0.3);
+}
+
+.tool-icon {
+    font-size: 2.5rem;
+    color: #FA481C;
+    margin-bottom: 20px;
+}
+
+.tool-card h4 {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.tool-card p {
+    color: #888;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Responsive Apropos */
+@media (max-width: 900px) {
+    .hero-title-jumbo {
+        font-size: 4rem;
+    }
+
+    .bio-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .bio-visual {
+        order: -1;
+        text-align: center;
+    }
+
+    .portrait-frame img {
+        max-width: 100%;
+    }
+
+    .bio-header h2 {
+        font-size: 2.5rem;
+    }
+}
+
+/* --- SECTION LISTE DES VLOGS (Redesign Background) --- */
+.vlog-section {
+    position: relative;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+    padding: 80px 30px;
+    color: white;
+    overflow: hidden;
+}
+
+/* Texture Grain de Film */
+.vlog-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* S'assurer que le contenu est au-dessus du grain */
+.vlog-section .section-header,
+.vlog-section .grille-vlogs {
+    position: relative;
+    z-index: 2;
+}
+
+
+.titre-section {
+    font-size: 3rem;
+    margin-bottom: 50px;
+    text-align: center;
+    font-style: italic;
+    border-bottom: 2px solid #FA481C;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.grille-vlogs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- STYLE DES CARTES VLOGS (EFFET VERRE ARRONDIE) --- */
+
+.card-vlog {
+    /* 1. L'Effet Verre (Glassmorphism) */
+    background: rgba(255, 255, 255, 0.05);
+    /* Fond très transparent */
+    backdrop-filter: blur(10px);
+    /* Le flou derrière */
+    -webkit-backdrop-filter: blur(10px);
+    /* Pour Safari */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Bordure fine */
+
+    /* 2. La Forme */
+    border-radius: 20px;
+    /* Coins bien arrondis */
+    padding: 20px;
+    /* IMPORTANT : Crée l'espace entre le bord verre et ton contenu */
+
+    /* 3. Animation */
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    /* Ombre portée */
+}
+
+/* Au survol, la carte monte et brille un peu plus */
+.card-vlog:hover {
+    transform: translateY(-10px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* On arrondit aussi légèrement l'image à l'intérieur pour que ça soit harmonieux */
+.thumb-wrapper {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    /* Petit arrondi sur l'image elle-même */
+    margin-bottom: 15px;
+    /* Espace entre image et titre */
+}
+
+/* (Garde le reste : .thumb-wrapper img, .duree, .vlog-info h4... comme avant) */
+
+.thumb-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    /* Noir et blanc par défaut */
+    transition: 0.3s;
+}
+
+.card-vlog:hover .thumb-wrapper img {
+    filter: grayscale(0%);
+    /* Couleur au survol */
+    transform: scale(1.1);
+}
+
+.duree {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: black;
+    color: white;
+    padding: 2px 8px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.vlog-info {
+    padding: 20px;
+    text-align: left;
+}
+
+.vlog-info h4 {
+    margin: 0 0 15px 0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.lien-vlog {
+    color: #FA481C;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.card-vlog:hover .lien-vlog {
+    color: white;
+    /* S'allume au survol */
+}
+
+
+/* --- SECTION TEASERS YOUTUBE --- */
+
+.teasers-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.grille-teasers {
+    display: grid;
+    /* Crée des colonnes automatiques (minimum 350px de large) */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* La carte globale */
+.youtube-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* L'habillage NÉON de la vidéo */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    /* Ratio 16:9 magique pour YouTube */
+    height: 0;
+
+    border-radius: 15px;
+    overflow: hidden;
+
+    /* Ton Style NÉON Orange */
+    border: 1px solid rgba(250, 72, 28, 0.4);
+    box-shadow: 0 0 20px rgba(250, 72, 28, 0.15);
+    transition: all 0.3s ease;
+}
+
+/* L'iframe YouTube à l'intérieur */
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Effet au survol */
+.video-wrapper:hover {
+    border-color: #FA481C;
+    box-shadow: 0 0 30px rgba(221, 57, 15, 0.5);
+    /* Néon plus fort */
+    transform: scale(1.02);
+    /* Petit zoom sympa */
+}
+
+/* Texte sous la vidéo */
+.teaser-info span {
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    /* Ou ta police habituelle */
+    letter-spacing: 2px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   STYLE PAGE VIDÉOS (Portfolio)
+   ========================================= */
+
+/* 1. L'EN-TÊTE DE LA PAGE */
+.header-video {
+    text-align: center;
+    padding: 100px 20px 60px;
+    /* Espace en haut et en bas */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+    /* Petit dégradé sympa */
+}
+
+.header-video .titre-principal {
+    font-size: 3rem;
+    margin-bottom: 50px;
+    text-align: center;
+    font-style: italic;
+    border-bottom: 2px solid #FA481C;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.header-video .sous-titre {
+    font-family: 'Montserrat', sans-serif;
+    /* Ou ta police texte classique */
+    color: #ccc;
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+    /* Espacement large pour le style "Cinéma" */
+    text-transform: uppercase;
+}
+
+/* 2. LES SECTIONS PAR CATÉGORIE */
+.section-categorie {
+    padding: 60px 20px;
+    max-width: 1200px;
+    /* Largeur max du contenu */
+    margin: 0 auto;
+    /* Centrer la section */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    /* Séparateur très discret entre les sections */
+}
+
+/* Le titre de chaque section (Entreprise, Docu...) */
+.titre-categorie {
+    font-size: 2rem;
+    margin-bottom: 50px;
+    text-align: center;
+    font-style: italic;
+    border-bottom: 2px solid #FA481C;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* 3. LA GRILLE DE VIDÉOS (Responsive) */
+.grille-videos {
+    display: grid;
+    /* Crée des colonnes automatiques : min 400px de large par vidéo */
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 50px;
+    /* Espace entre les vidéos */
+}
+
+/* Cas spécial : Si on veut centrer une vidéo seule (comme le Docu) */
+.grille-videos.solo {
+    display: flex;
+    justify-content: center;
+}
+
+.grille-videos.solo .video-card {
+    width: 100%;
+    max-width: 800px;
+    /* Le docu sera plus grand */
+}
+
+/* 4. LA CARTE VIDÉO (Le conteneur) */
+.video-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* L'EFFET NÉON + FORMAT 16/9 */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    /* Ratio 16:9 OBLIGATOIRE pour YouTube (sinon bandes noires) */
+    padding-bottom: 56.25%;
+    height: 0;
+
+    border-radius: 15px;
+    /* Coins arrondis */
+    overflow: hidden;
+
+    /* LE STYLE NÉON (Base) */
+    border: 1px solid rgba(250, 72, 28, 0.3);
+    /* Bordure fine */
+    box-shadow: 0 0 15px rgba(250, 72, 28, 0.1);
+    /* Lueur légère */
+    background: #000;
+    /* Fond noir si la vidéo charge mal */
+
+    transition: all 0.4s ease;
+    /* Animation fluide */
+}
+
+/* L'iframe YouTube à l'intérieur */
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 5. EFFETS AU SURVOL (HOVER) */
+.video-card:hover .video-wrapper {
+    transform: scale(1.02);
+    /* Zoom léger */
+    border-color: #FA481C;
+    /* Bordure devient orange vif */
+    box-shadow:
+        0 0 30px rgba(250, 72, 28, 0.4),
+        /* Lueur externe */
+        inset 0 0 20px rgba(250, 72, 28, 0.1);
+    /* Reflet interne */
+}
+
+/* 6. TYPOGRAPHIE DES VIDÉOS */
+.video-card h3 {
+    color: white;
+    font-size: 1.4rem;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    transition: color 0.3s;
+}
+
+.video-card:hover h3 {
+    color: #FA481C;
+    /* Le titre s'allume aussi au survol */
+}
+
+.description-docu {
+    color: #aaa;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    font-style: italic;
+    max-width: 800px;
+}
+
+/* 7. ADAPTATION MOBILE */
+@media (max-width: 768px) {
+    .header-video .titre-principal {
+        font-size: 2.5rem;
+        /* Titre plus petit sur téléphone */
+    }
+
+    .grille-videos {
+        grid-template-columns: 1fr;
+        /* 1 seule colonne sur mobile */
+    }
+
+    .titre-categorie {
+        font-size: 1.8rem;
+    }
+}
+
+/* AJOUT POUR LES VIDÉOS LOCALES */
+.video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* La vidéo remplit tout le cadre sans se déformer */
+    outline: none;
+    border-radius: 15px;
+}
+
+
+/* --- AJOUT POUR LA SECTION MIXTE (IMAGES + VIDÉOS) --- */
+/* Permet aux images de remplir le cadre néon comme les vidéos */
+.video-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Remplit tout sans déformer */
+    border-radius: 15px;
+    /* Garde les bords arrondis */
+    transition: transform 0.5s ease;
+}
+
+/* Petit effet zoom sympa quand on passe la souris sur une image */
+.video-card:hover img {
+    transform: scale(1.05);
+}
+
+/* --- STYLE SPÉCIAL DOCUMENTAIRE (AFFICHE + BOUTON) --- */
+
+/* 1. On centre la grille pour le docu */
+.grille-videos.solo-center {
+    display: flex;
+    justify-content: center;
+}
+
+/* 2. Mise en page côte à côte (Affiche à gauche / Texte à droite) sur PC */
+.card-affiche {
+    display: flex;
+    flex-direction: row;
+    /* Alignement horizontal */
+    align-items: center;
+    gap: 40px;
+    max-width: 900px;
+    background: rgba(255, 255, 255, 0.02);
+    /* Fond très léger */
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 3. Le cadre de l'affiche (Format Portrait 2:3) */
+.poster-wrapper {
+    width: 300px;
+    /* Largeur fixe pour l'affiche */
+    aspect-ratio: 2/3;
+    /* Ratio cinéma standard */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(250, 72, 28, 0.2);
+    /* Ombre orange */
+    border: 1px solid rgba(250, 72, 28, 0.3);
+    flex-shrink: 0;
+    /* Empêche l'image de s'écraser */
+}
+
+.poster-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card-affiche:hover .poster-wrapper img {
+    transform: scale(1.05);
+    /* Zoom au survol */
+}
+
+/* 4. Les infos à droite */
+.info-docu {
+    flex: 1;
+    text-align: left;
+}
+
+.info-docu h3 {
+    font-size: 2rem;
+    color: #FA481C;
+    margin-top: 0;
+}
+
+/* 5. Le Bouton "Regarder" */
+.btn-docu {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background-color: #FA481C;
+    /* Ton orange */
+    color: white;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    border: 1px solid #FA481C;
+}
+
+.btn-docu:hover {
+    background-color: transparent;
+    color: #FA481C;
+    box-shadow: 0 0 15px rgba(250, 72, 28, 0.4);
+}
+
+/* --- VERSION MOBILE (Tout empiler) --- */
+@media (max-width: 768px) {
+    .card-affiche {
+        flex-direction: column;
+        /* Affiche en haut, texte en bas */
+        text-align: center;
+        padding: 20px;
+    }
+
+    .poster-wrapper {
+        width: 100%;
+        max-width: 250px;
+        /* Affiche moins grosse sur mobile */
+    }
+
+    .info-docu {
+        text-align: center;
+    }
+}
+
+.poster-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    /* AJOUTE ÇA : Améliore la netteté sur certains navigateurs */
+    image-rendering: -webkit-optimize-contrast;
+
+    transition: transform 0.5s ease;
+}
+
+/* --- STYLE SPÉCIAL COMMUNITY MANAGEMENT --- */
+
+/* On modifie le ratio pour faire des CARRÉS (Format Insta) */
+.video-wrapper.format-insta {
+    padding-bottom: 100%;
+    /* Ratio 1:1 (Carré parfait) */
+}
+
+/* Si tu préfères le format PORTRAIT (Stories), mets 125% ou 177% */
+/* .video-wrapper.format-insta { padding-bottom: 125%; } */
+
+/* On s'assure que l'image est nette et entière */
+.video-wrapper.format-insta img {
+    object-fit: cover;
+    /* Remplit le carré (coupe un peu les bords si l'image n'est pas carrée) */
+    /* OU */
+    /* object-fit: contain; */
+    /* Affiche TOUTE l'image sans couper (mais laisse des bandes noires) */
+}
+
+/* --- STYLE BOUTON PLAY VIDÉO (THUMBNAIL) --- */
+
+/* L'overlay qui couvre la miniature */
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+/* Le bouton Play central */
+.play-button {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.play-button i {
+    font-size: 1.8rem;
+    color: white;
+    margin-left: 5px;
+    /* Décale légèrement pour centrer visuellement le triangle */
+    transition: all 0.3s ease;
+}
+
+/* Hover sur la carte vidéo avec thumbnail */
+.video-thumbnail:hover .play-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.video-thumbnail:hover .play-button {
+    transform: scale(1.15);
+    background: rgba(250, 72, 28, 0.9);
+    border-color: #FA481C;
+    box-shadow:
+        0 0 40px rgba(250, 72, 28, 0.6),
+        0 0 80px rgba(250, 72, 28, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.video-thumbnail:hover .play-button i {
+    transform: scale(1.1);
+}
+
+/* Animation de l'image au survol */
+.video-thumbnail:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.8);
+}
+
+.video-thumbnail img {
+    transition: all 0.5s ease;
+}
+
+/* S'assurer que le curseur est pointer sur tout le wrapper cliquable */
+.video-thumbnail {
+    cursor: pointer;
+}
+
+/* --- CORRECTION CADRAGE ACCUEIL (Format 16/9) --- */
+
+/* 1. On force le conteneur de l'image à être un rectangle parfait (16:9) */
+.cadre-image {
+    width: 100%;
+    /* La propriété magique qui force le format rectangle */
+    aspect-ratio: 16 / 9;
+    /* Important : Coupe tout ce qui dépasse des bords arrondis */
+    overflow: hidden;
+}
+
+/* 2. On oblige l'image à remplir ce rectangle */
+.cadre-image img {
+    width: 100%;
+    height: 100%;
+    /* Zoom dans l'image pour qu'elle remplisse tout sans s'écraser */
+    object-fit: cover;
+    /* Centre l'image (pour voir le milieu de ton collage) */
+    object-position: center;
+}
+
+/* --- FOOTER PRO (GLASS & NEON) --- */
+
+.footer-glass {
+    position: relative;
+    background: #000;
+    /* Fond noir */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    /* Ligne subtile en haut */
+    padding: 100px 30px 60px;
+    /* Plus d'espace */
+    text-align: center;
+    margin-top: 80px;
+    /* Plus d'écart avec le contenu */
+}
+
+/* Titre "PRÊT À CRÉER ?" */
+.footer-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+    letter-spacing: 4px;
+}
+
+.footer-subtitle {
+    color: #888;
+    margin-bottom: 50px;
+    font-size: 1.3rem;
+}
+
+/* Les Icônes Réseaux */
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    /* Espace entre les icônes */
+    margin-bottom: 50px;
+}
+
+.social-icon {
+    font-size: 1.8rem;
+    color: white;
+    transition: all 0.3s ease;
+    text-decoration: none;
+
+    /* Cercle autour de l'icône (optionnel, supprime border/padding si tu veux juste l'icone) */
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* EFFET HOVER (L'icône s'allume en Orange) */
+.social-icon:hover {
+    color: #FA481C;
+    /* L'icône devient orange */
+    border-color: #FA481C;
+    /* Le cercle devient orange */
+    box-shadow: 0 0 20px rgba(250, 72, 28, 0.4);
+    /* Lueur néon */
+    transform: translateY(-5px);
+    /* L'icône remonte un peu */
+}
+
+/* Copyright tout en bas */
+.footer-bottom p {
+    color: #444;
+    font-size: 0.9rem;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 20px;
+    display: inline-block;
+}
+
+/* --- AJOUTS FOOTER (STAGE & CONTACT) --- */
+
+/* La boîte "Recherche Stage" */
+.availability-badge {
+    background: rgba(250, 72, 28, 0.1);
+    /* Fond orange très léger */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid #FA481C;
+    /* Bordure orange plus épaisse */
+    color: #FA481C;
+    display: inline-block;
+    padding: 20px 40px;
+    /* Plus de padding */
+    border-radius: 15px;
+    /* Coins plus arrondis */
+    font-weight: bold;
+    font-size: 1.2rem;
+    /* Texte plus grand */
+    margin-top: 30px;
+    margin-bottom: 40px;
+    /* Plus d'espace en dessous */
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    line-height: 1.8;
+    /* Plus d'espace entre les lignes */
+    box-shadow: 0 0 25px rgba(250, 72, 28, 0.2);
+    /* Lueur néon subtile */
+    transition: all 0.3s ease;
+}
+
+.availability-badge:hover {
+    box-shadow: 0 0 40px rgba(250, 72, 28, 0.4);
+    transform: translateY(-3px);
+}
+
+.sub-availability {
+    font-size: 0.9rem;
+    color: white;
+    /* Le "Possibilité alternance" en blanc */
+    font-weight: normal;
+}
+
+/* Le petit point qui clignote (Record) */
+.dot-rec {
+    color: #FA481C;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Bloc Téléphone & Mail (Texte) */
+.contact-info {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.contact-link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.contact-link:hover {
+    color: #FA481C;
+    /* Orange au survol */
+}
+
+.separator {
+    color: #555;
+    margin: 0 10px;
+}
+
+/* Ajustement Mobile : Empiler téléphone et mail */
+@media (max-width: 768px) {
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        /* L'un sous l'autre */
+        gap: 10px;
+    }
+
+    .separator {
+        display: none;
+        /* On cache la barre verticale sur mobile */
+    }
+}
+
+
+/* --- PAGE À PROPOS : STYLE LOGICIEL MONTAGE --- */
+
+/* 1. SECTION PROFIL (MONITEUR) */
+.intro-profil {
+    display: flex;
+    justify-content: center;
+}
+
+.profil-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+    max-width: 1000px;
+    padding: 40px;
+    background: rgba(20, 20, 20, 0.8);
+    /* Fond sombre comme un panneau Premiere */
+    border: 1px solid #333;
+    border-radius: 10px;
+}
+
+.profil-img {
+    width: 300px;
+    height: 300px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    /* Rond */
+    overflow: hidden;
+    border: 3px solid #FA481C;
+    box-shadow: 0 0 20px rgba(229, 30, 24, 0.3);
+}
+
+.profil-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profil-text {
+    flex: 1;
+    color: #ddd;
+}
+
+.timecode {
+    font-family: 'Courier New', monospace;
+    /* Police style code */
+    color: #FA481C;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.rec-dot {
+    animation: blink 1s infinite;
+    color: red;
+    font-size: 0.8rem;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+/* 2. LA TIMELINE (LIGNE DE TEMPS) */
+.timeline-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* La ligne verticale centrale (La Tête de Lecture) */
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: #333;
+    /* Ligne grise de base */
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+}
+
+/* La lueur qui suit le scroll */
+.timeline-glow {
+    position: absolute;
+    width: 4px;
+    height: 0;
+    left: 50%;
+    top: 0;
+    margin-left: -2px;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            #FA481C 20%,
+            #FA481C 80%,
+            transparent 100%);
+    box-shadow:
+        0 0 15px #FA481C,
+        0 0 30px rgba(250, 72, 28, 0.6),
+        0 0 50px rgba(250, 72, 28, 0.3);
+    z-index: 2;
+    pointer-events: none;
+    transition: height 0.05s linear;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+/* Placement Gauche / Droite */
+.left {
+    left: 0;
+    text-align: right;
+}
+
+.right {
+    left: 50%;
+    text-align: left;
+}
+
+/* Point sur la ligne */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: rgb(0, 0, 0);
+    border: 4px solid #555;
+    top: 25px;
+    border-radius: 50%;
+    z-index: 3;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Point activé (quand la lueur passe dessus) */
+.timeline-item.active::after {
+    background-color: #FA481C;
+    border-color: #FA481C;
+    transform: scale(1.5);
+    box-shadow:
+        0 0 20px #FA481C,
+        0 0 40px rgba(250, 72, 28, 0.5);
+}
+
+.left::after {
+    right: -12px;
+}
+
+.right::after {
+    left: -12px;
+}
+
+/* LE LOOK "CLIP VIDÉO" (Boîtes colorées) */
+.video-clip {
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.video-clip:hover {
+    transform: scale(1.05);
+    z-index: 5;
+}
+
+/* Couleurs des clips (Comme dans Premiere : Bleu, Violet, Vert...) */
+.orange-clip {
+    background: rgba(250, 72, 28, 0.2);
+    border-left: 5px solid #FA481C;
+}
+
+.blue-clip {
+    background: rgba(0, 123, 255, 0.2);
+    border-left: 5px solid #007bff;
+}
+
+.green-clip {
+    background: rgba(40, 167, 69, 0.2);
+    border-left: 5px solid #28a745;
+}
+
+.purple-clip {
+    background: rgba(111, 66, 193, 0.2);
+    border-left: 5px solid #6f42c1;
+}
+
+.clip-label {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+.date {
+    display: block;
+    font-weight: bold;
+    margin: 5px 0;
+    color: white;
+}
+
+
+/* RESPONSIVE (MOBILE) */
+@media (max-width: 768px) {
+
+    /* Profil vertical */
+    .profil-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Timeline devient une liste simple */
+    .timeline-container::after {
+        left: 31px;
+    }
+
+    /* Lueur sur la ligne à gauche sur mobile */
+    .timeline-glow {
+        left: 31px;
+        margin-left: -2px;
+    }
+
+    /* Ligne à gauche */
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+    .timeline-item::after {
+        left: 20px;
+    }
+
+    /* Points à gauche */
+    .left {
+        text-align: left;
+    }
+
+    /* Tout aligné à gauche */
+    .right {
+        left: 0;
+    }
+}
+
+/* --- BOUTON CV STYLE UniVERT --- */
+.btn-univert {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    /* Espace entre l'icône et le texte */
+
+    background-color: #FA481C;
+    /* Le Vert Nature */
+    color: rgb(0, 0, 0);
+
+    padding: 15px 35px;
+    /* Assez large pour être important */
+    border-radius: 50px;
+    /* Bords tout ronds */
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+
+    transition: all 0.3s ease;
+    /* Animation douce */
+    box-shadow: 0 4px 15px rgba(210, 50, 14, 0.3);
+    /* Légère lueur verte */
+}
+
+/* Au survol de la souris */
+.btn-univert:hover {
+    background-color: #ffffff;
+    /* Vert un peu plus foncé */
+    transform: translateY(-3px);
+    /* Le bouton remonte un peu */
+    box-shadow: 0 0 25px #b05a32(76, 175, 80, 0.6);
+    /* La lueur devient intense (Effet Néon) */
+}
+
+
+
+/* --- PAGE CV VIEWER --- */
+.cv-viewer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    min-height: 80vh;
+    /* Prend une bonne partie de l'écran */
+}
+
+.cv-container {
+    background: rgba(25, 25, 25, 0.9);
+    /* Fond sombre */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 60px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 600px;
+    margin-top: 40px;
+    box-shadow: 0 0 50px rgba(250, 72, 28, 0.15);
+    /* Légère lueur orange derrière */
+}
+
+.cv-intro-text h2 {
+    color: white;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cv-intro-text p {
+    color: #aaa;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* Le Gros Bouton Central */
+.btn-cv-big {
+    display: inline-block;
+    background-color: #FA481C;
+    color: white;
+    padding: 20px 40px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 30px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.btn-cv-big:hover {
+    background-color: transparent;
+    border-color: #FA481C;
+    color: #FA481C;
+    box-shadow: 0 0 30px rgba(250, 72, 28, 0.4);
+    transform: scale(1.05);
+}
+
+/* --- LE CADRE CV AVEC FOND FLOU --- */
+.cv-container {
+    position: relative;
+    /* Important pour que l'image reste dedans */
+    overflow: hidden;
+    /* Coupe tout ce qui dépasse (le flou) */
+
+    /* Taille et espacement */
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 80px 40px;
+    /* Plus d'espace pour voir l'image derrière */
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* L'IMAGE DU CV EN FOND (FLOUTÉE) */
+.cv-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* ICI : Mets bien le chemin vers ton image */
+    background-image: url('images/apercu_cv.jpg');
+    background-size: cover;
+    /* L'image couvre tout le cadre */
+    background-position: top center;
+    /* On voit le haut du CV */
+
+    /* LA MAGIE : Flou + Assombrissement pour lire le texte */
+    filter: blur(6px) brightness(0.4);
+    transform: scale(1.1);
+    /* Zoom un peu pour éviter les bords blancs du flou */
+
+    z-index: 0;
+    /* Reste derrière le texte */
+    transition: all 0.5s ease;
+}
+
+/* EFFET AU SURVOL DU CADRE (Optionnel : ça rend l'image un peu plus nette) */
+.cv-container:hover::before {
+    filter: blur(3px) brightness(0.5);
+    /* Moins flou quand on passe la souris */
+    transform: scale(1.05);
+}
+
+/* LE TEXTE ET LE BOUTON (DOIVENT RESTER NETS) */
+.cv-intro-text,
+.cv-actions {
+    position: relative;
+    z-index: 1;
+    /* Passe DEVANT l'image de fond */
+}
+
+/* Style du texte pour qu'il ressorte bien */
+.cv-intro-text h2 {
+    color: white;
+    font-size: 2rem;
+    text-shadow: 0 2px 10px black;
+    /* Ombre pour lisibilité */
+    margin-bottom: 15px;
+}
+
+.cv-intro-text p {
+    color: #f0f0f0;
+    font-weight: 500;
+    text-shadow: 0 2px 5px black;
+}
+
+/* --- LE LIEN DU LOGO --- */
+.logo a {
+    text-decoration: none;
+    /* Enlève le soulignement */
+    color: inherit;
+    /* Garde la couleur blanche (ou celle définie dans .logo) */
+    cursor: pointer;
+    /* Affiche la petite main quand on passe dessus */
+    transition: opacity 0.3s ease;
+}
+
+.logo a:hover {
+    opacity: 0.8;
+    /* Petit effet sympa au survol */
+}
+
+/* --- STYLE DE TITRE HARMONISÉ (Style "Derniers Épisodes") --- */
+.titre-harmonise {
+    /* 1. La Typographie */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    /* Extra Gras pour l'impact */
+    font-style: italic;
+    /* Le style dynamique */
+    text-transform: uppercase;
+    /* Force les majuscules même si vous écrivez en minuscules */
+    color: #ffffff;
+    /* Texte Blanc */
+    text-align: center;
+
+    /* 2. La Barre Orange */
+    position: relative;
+    display: inline-block;
+    /* Important pour que la barre colle à la largeur du texte */
+    padding-bottom: 10px;
+    /* Espace entre texte et barre */
+    margin-bottom: 50px;
+    /* Espace sous le titre */
+}
+
+/* La ligne orange elle-même */
+.titre-harmonise::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    /* Prend 100% de la largeur du mot */
+    height: 4px;
+    /* Épaisseur de la barre */
+    background-color: #FA481C;
+    /* Votre Orange */
+}
+
+/* Une div pour centrer le tout proprement sur la page */
+.container-titre-centre {
+    text-align: center;
+    width: 100%;
+    margin-top: 50px;
+    /* Marge au-dessus pour respirer */
+}
+
+/* --- NOUVEAU STYLE : TITRE AVEC LIGNES LATÉRALES --- */
+.titre-lignes-cote {
+    /* 1. L'alignement magique */
+    display: flex;
+    align-items: center;
+    /* Centre les lignes verticalement par rapport au texte */
+    justify-content: center;
+    /* Centre le tout au milieu de la page */
+
+    /* 2. Le style du texte (Basé sur "On s'en Battt") */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    /* Gras */
+    font-style: italic;
+    /* Italique pour le dynamisme */
+    text-transform: uppercase;
+    color: white;
+    font-size: 2.5rem;
+    /* Taille du texte (ajustable) */
+    white-space: nowrap;
+    /* Empêche le texte de se couper bêtement */
+}
+
+/* 3. Les Lignes Orange (Avant et Après le texte) */
+.titre-lignes-cote::before,
+.titre-lignes-cote::after {
+    content: "";
+    /* Crée l'élément vide */
+    display: block;
+    width: 60px;
+    /* LONGUEUR du trait (vous pouvez mettre 80px ou 100px) */
+    height: 3px;
+    /* ÉPAISSEUR du trait (fin) */
+    background-color: #FA481C;
+    /* Votre Orange */
+    margin: 0 25px;
+    /* ESPACE entre le texte et le trait */
+}
+
+/* --- VERSION MOBILE (Pour que ça reste beau sur téléphone) --- */
+@media (max-width: 768px) {
+    .titre-lignes-cote {
+        font-size: 1.8rem;
+        /* Texte plus petit sur mobile */
+        white-space: normal;
+        /* Autorise le texte à passer à la ligne si trop long */
+        text-align: center;
+    }
+
+    .titre-lignes-cote::before,
+    .titre-lignes-cote::after {
+        width: 30px;
+        /* Traits plus courts sur mobile */
+        margin: 0 15px;
+        /* Moins d'espace */
+    }
+}
+
+/* --- TEXTE NARRATIF CENTRÉ (Pour I Clean My Sea) --- */
+.texte-narratif-centre {
+    /* 1. Positionnement et Taille */
+    max-width: 800px;
+    /* On limite la largeur pour que ce soit agréable à lire */
+    margin: 40px auto;
+    /* On centre le bloc au milieu de la page */
+    padding: 0 20px;
+    /* Marge de sécurité sur mobile */
+
+    /* 2. Typographie */
+    text-align: center;
+    /* Tout le texte est centré */
+    font-family: 'Montserrat', sans-serif;
+    color: #e0e0e0;
+    /* Gris très clair (plus doux que le blanc pur) */
+    font-size: 1.1rem;
+    line-height: 1.8;
+    /* Espacement entre les lignes pour aérer */
+}
+
+/* Espacement entre les paragraphes */
+.texte-narratif-centre p {
+    margin-bottom: 30px;
+}
+
+/* Mise en valeur des mots importants (en gras) */
+.texte-narratif-centre strong {
+    color: white;
+    /* Blanc pur */
+    font-weight: 700;
+}
+
+/* --- SOUS-TITRE : NON-ITALIQUE + SOULIGNÉ --- */
+.sous-titre-souligne {
+    /* 1. Style du texte */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    /* Gras */
+    font-style: normal;
+    /* PAS D'ITALIQUE (comme demandé) */
+    color: white;
+    font-size: 2rem;
+    /* Taille adaptée pour un sous-titre */
+    text-transform: none;
+    /* On garde les majuscules/minuscules normales */
+
+    /* 2. Préparation du soulignement */
+    position: relative;
+    display: inline-block;
+    /* Le bloc colle à la largeur du texte */
+    padding-bottom: 15px;
+    /* Espace entre le texte et la barre */
+    margin-bottom: 40px;
+}
+
+/* 3. La barre orange en dessous */
+.sous-titre-souligne::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    /* Souligne tout le mot */
+    height: 3px;
+    /* Épaisseur du trait */
+    background-color: #FA481C;
+    /* Orange */
+}
+
+/* Conteneur pour centrer le tout */
+.centreur-texte {
+    text-align: center;
+    width: 100%;
+}
+
+/* La fenêtre noire de fond */
+.modal-overlay {
+    display: none;
+    /* Caché par défaut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* La classe qui active l'affichage */
+.modal-overlay.active {
+    display: flex;
+}
+
+/* La boîte blanche/contenu */
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    /* Largeur max de la vidéo */
+    background: transparent;
+}
+
+/* Le ratio 16/9 OBLIGATOIRE pour YouTube */
+.iframe-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    /* Ratio 16:9 */
+    height: 0;
+}
+
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* La croix de fermeture */
+.close-btn {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+
+/* --- GRILLE POUR 3 VIDÉOS --- */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 colonnes de taille égale */
+    gap: 20px;
+    /* Espace entre les vidéos */
+    margin: 40px auto;
+    /* Marge au-dessus et en-dessous */
+    max-width: 1200px;
+    /* Largeur max pour pas que ça soit trop large sur grand écran */
+    padding: 0 20px;
+}
+
+/* --- LE LECTEUR VIMEO (Individuel) --- */
+.vimeo-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* Ratio 16:9 magique */
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.vimeo-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* --- VERSION MOBILE (Les vidéos passent l'une sous l'autre) --- */
+@media (max-width: 768px) {
+    .video-grid {
+        grid-template-columns: 1fr;
+        /* 1 seule colonne */
+    }
+}
+
+/* --- LE CONTENEUR VERRE (Style Intro) --- */
+.glass-intro-box {
+    background: rgba(20, 20, 20, 0.6);
+    /* Fond sombre semi-transparent */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(250, 72, 28, 0.4);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(250, 72, 28, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+    max-width: 900px;
+    margin: 60px auto 50px;
+    /* Centré verticalement et horizontalement */
+    padding: 50px 40px;
+    /* Plus d'espace pour respirer */
+    border-radius: 20px;
+    text-align: center;
+    /* Tout le texte centré */
+
+    /* Animation de transition */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Effet au survol */
+.glass-intro-box:hover {
+    transform: translateY(-8px);
+    border-color: #FA481C;
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(250, 72, 28, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    background: rgba(30, 30, 30, 0.7);
+}
+
+/* Le texte normal (Blanc & Moderne) */
+.glass-intro-box p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    /* Un peu plus gros comme sur ton image */
+    line-height: 1.8;
+    /* Lignes aérées */
+    color: #ffffff;
+    /* Blanc pur */
+    font-weight: 400;
+    margin: 0;
+}
+
+/* LE STYLE MAGIQUE (Orange & Italique) */
+.highlight-text {
+    color: #FA481C;
+    /* Ton Orange */
+    font-family: 'Playfair Display', serif;
+    /* La police "Classe" */
+    font-style: italic;
+    font-weight: 400;
+    /* Playfair est déjà assez épaisse */
+    font-size: 1.3rem;
+    /* Légèrement plus grand pour ressortir */
+}
+
+/* --- VIDEO VIMEO RESPONSIVE --- */
+.vimeo-container-unique {
+    max-width: 1000px;
+    margin: 0 auto 80px;
+    /* Centré + Marge en bas */
+}
+
+.vimeo-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.vimeo-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* =========================================
+   SLIDESHOW GLASS (I Clean My Sea)
+   ========================================= */
+
+/* Container principal avec effet verre */
+.slideshow-glass-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(250, 72, 28, 0.3);
+    border-radius: 25px;
+    box-shadow:
+        0 15px 50px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(250, 72, 28, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Wrapper des slides */
+.slideshow-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #000;
+}
+
+/* Chaque slide */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: scale(1.05);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    pointer-events: none;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Caption sous l'image */
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+}
+
+.slide-caption h3 {
+    margin: 0;
+    color: white;
+    font-size: 1.3rem;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+/* Flèches de navigation */
+.slide-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.slide-arrow.prev {
+    left: 15px;
+}
+
+.slide-arrow.next {
+    right: 15px;
+}
+
+.slide-arrow:hover {
+    background: rgba(250, 72, 28, 0.8);
+    border-color: #FA481C;
+    box-shadow: 0 0 20px rgba(250, 72, 28, 0.5);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Points indicateurs */
+.slide-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.dot.active {
+    background: #FA481C;
+    border-color: #FA481C;
+    box-shadow: 0 0 15px rgba(250, 72, 28, 0.5);
+    transform: scale(1.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .slideshow-glass-container {
+        margin: 0 15px;
+        padding: 20px;
+    }
+
+    .slide-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .slide-arrow.prev {
+        left: 10px;
+    }
+
+    .slide-arrow.next {
+        right: 10px;
+    }
+}
+
+/* =========================================
+   NOUVELLE PAGE VIDÉO - STYLES
+   ========================================= */
+
+/* HERO CINÉMATIQUE */
+.video-hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a05 50%, #0a0a0a 100%);
+}
+
+.hero-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(250, 72, 28, 0.15) 0%, transparent 60%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero-tag {
+    display: inline-block;
+    background: rgba(250, 72, 28, 0.2);
+    border: 1px solid #FA481C;
+    color: #FA481C;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin: 0 0 20px;
+    letter-spacing: 2px;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: #888;
+    max-width: 600px;
+    margin: 0 auto 50px;
+    line-height: 1.6;
+}
+
+.scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: #666;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    transition: color 0.3s;
+}
+
+.scroll-indicator:hover {
+    color: #FA481C;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+/* NAVIGATION ONGLETS */
+.video-nav {
+    position: sticky;
+    top: 80px;
+    z-index: 100;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.nav-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.03);
+    color: #888;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+}
+
+.nav-tab:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.nav-tab.active {
+    background: rgba(250, 72, 28, 0.2);
+    color: #FA481C;
+    border-color: #FA481C;
+}
+
+/* PROJET VEDETTE */
+.featured-project {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.featured-glass {
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(250, 72, 28, 0.3);
+    border-radius: 30px;
+    padding: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.featured-badge {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    background: #FA481C;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.featured-content {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.featured-poster {
+    position: relative;
+    width: 300px;
+    flex-shrink: 0;
+}
+
+.featured-poster img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.poster-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(ellipse, rgba(250, 72, 28, 0.3) 0%, transparent 60%);
+    z-index: -1;
+    filter: blur(40px);
+}
+
+.featured-info {
+    flex: 1;
+}
+
+.featured-year {
+    color: #FA481C;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+.featured-title {
+    font-size: 3rem;
+    margin: 10px 0 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.featured-type {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.featured-description {
+    color: #bbb;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.featured-credits {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.credit {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.credit-role {
+    color: #666;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.credit-name {
+    color: white;
+    font-weight: 600;
+}
+
+.btn-watch {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 40px;
+    background: #FA481C;
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-watch:hover {
+    background: transparent;
+    box-shadow: 0 0 30px rgba(250, 72, 28, 0.5);
+    border: 2px solid #FA481C;
+    transform: translateY(-3px);
+}
+
+/* SECTIONS VIDÉO */
+.video-section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.section-line {
+    flex: 1;
+    max-width: 150px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(250, 72, 28, 0.5), transparent);
+}
+
+.section-title {
+    font-size: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.project-intro {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    padding: 25px 35px;
+    text-align: center;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-intro p {
+    margin: 0;
+    color: #bbb;
+    line-height: 1.7;
+}
+
+/* VIDEO SHOWCASE (FEATURED CORPORATE) */
+.video-showcase {
+    display: flex;
+    justify-content: center;
+}
+
+.showcase-card {
+    position: relative;
+    max-width: 900px;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.showcase-card .card-visual {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+
+.showcase-card .card-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.showcase-card:hover .card-visual img {
+    transform: scale(1.05);
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.6) 30%, transparent 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 50px 40px;
+}
+
+.play-btn-large {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(250, 72, 28, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 50px rgba(250, 72, 28, 0.5);
+}
+
+.showcase-card:hover .play-btn-large {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 80px rgba(250, 72, 28, 0.7);
+}
+
+.card-info {
+    position: relative;
+    z-index: 2;
+}
+
+.card-tag {
+    background: rgba(250, 72, 28, 0.3);
+    color: #FA481C;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+}
+
+.card-info h3 {
+    font-size: 2rem;
+    margin: 15px 0 5px;
+}
+
+.card-info p {
+    color: #888;
+    margin: 0;
+}
+
+/* Texte sous l'image */
+.card-info-below {
+    padding: 25px 30px;
+    background: rgba(20, 20, 20, 0.9);
+    text-align: center;
+    border-radius: 0 0 20px 20px;
+}
+
+.card-info-below .card-tag {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.card-info-below h3 {
+    font-size: 1.8rem;
+    margin: 0 0 8px;
+    color: white;
+}
+
+.card-info-below p {
+    color: #888;
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* GALERIE HORIZONTALE */
+.horizontal-gallery {
+    position: relative;
+    margin: 0 -20px;
+    padding: 20px 0;
+}
+
+.gallery-track {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    padding: 20px 40px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    cursor: none;
+    /* Cache le curseur par défaut */
+}
+
+.gallery-track::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery-item {
+    flex-shrink: 0;
+    width: 280px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px);
+}
+
+.item-visual {
+    position: relative;
+    aspect-ratio: 1/1;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.item-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover .item-visual img {
+    transform: scale(1.1);
+}
+
+.item-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(250, 72, 28, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover .item-play {
+    opacity: 1;
+}
+
+.item-info {
+    padding: 15px 5px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.item-number {
+    color: #FA481C;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.item-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.gallery-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    pointer-events: none;
+}
+
+.gallery-arrow {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+}
+
+.gallery-arrow:hover {
+    background: #FA481C;
+    border-color: #FA481C;
+}
+
+/* GRILLE PROJETS */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    border-color: rgba(250, 72, 28, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.project-visual {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+
+.project-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-visual img {
+    transform: scale(1.1);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-play {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #FA481C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.project-details {
+    padding: 25px;
+    background: rgba(20, 20, 20, 0.8);
+}
+
+.project-details h3 {
+    margin: 0 0 5px;
+    font-size: 1.3rem;
+}
+
+.project-details p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* ANIMATIONS SCROLL */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE VIDÉO PAGE */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .featured-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .featured-poster {
+        width: 200px;
+    }
+
+    .featured-credits {
+        justify-content: center;
+    }
+
+    .gallery-item {
+        width: 220px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-tab span {
+        display: none;
+    }
+
+    .nav-tab {
+        padding: 12px 16px;
+    }
+}
+
+/* ========================================
+   CUSTOM CURSOR
+   ======================================== */
+body {
+    cursor: none;
+    /* Cache le curseur par défaut */
+}
+
+.cursor-dot,
+.cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+    /* Laisse passer les clics */
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #FA481C;
+    /* Orange Brand */
+    box-shadow: 0 0 10px rgba(250, 72, 28, 0.5);
+}
+
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+/* État Hover (Survol lien/bouton) */
+.cursor-outline.hovered {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: transparent;
+    backdrop-filter: blur(2px);
+}
+
+/* État Hover pour le dot aussi (optionnel, pour qu'il reste visible on top) */
+.cursor-dot.hovered {
+    transform: translate(-50%, -50%) scale(1.5);
+}
+
+/* État Click */
+.cursor-outline.clicking {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(250, 72, 28, 0.3);
+}
+
+/* Désactiver sur mobile via Media Query aussi au cas où */
+@media (max-width: 768px) {
+    * {
+        cursor: auto !important;
+    }
+
+    .cursor-dot,
+    .cursor-outline {
+        display: none !important;
+    }
+}
+
+/* OVERRIDE CURSEUR - THÈME OCÉAN */
+body.theme-ocean .cursor-dot {
+    background-color: #00BFA5;
+    box-shadow: 0 0 10px rgba(0, 191, 165, 0.5);
+}
+
+body.theme-ocean .cursor-outline.clicking {
+    background-color: rgba(0, 191, 165, 0.3);
+}

@@ -1,0 +1,391 @@
+/* =========================================
+   ICLEANMYSEA.CSS - Page I Clean My Sea
+   Thème Océan (couleur #00BFA5)
+   ========================================= */
+
+/* --- HERO ICMS --- */
+.hero-icms {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 80px;
+    padding-bottom: 0;
+}
+
+.hero-background-icms {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #0a0a0a 0%, #051a1a 40%, #051a1a 60%, #0a0a0a 98%, #0a0a0a 100%);
+}
+
+.hero-gradient-icms {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(0, 150, 136, 0.15) 0%, transparent 60%);
+}
+
+.hero-content-icms {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.hero-tag-icms {
+    display: inline-block;
+    background: rgba(0, 150, 136, 0.15);
+    border: 1px solid rgba(0, 150, 136, 0.5);
+    color: #00BFA5;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.titre-hero-icms {
+    font-size: 4.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    letter-spacing: 10px;
+    margin: 20px 0;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #ffffff 0%, #00BFA5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 60px rgba(0, 150, 136, 0.3);
+}
+
+.tagline-icms {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1rem;
+    color: #aaa;
+    letter-spacing: 2px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dot-separator-icms {
+    color: #00BFA5;
+    font-size: 1.5rem;
+}
+
+.scroll-indicator-icms {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-top: 40px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    transition: color 0.3s;
+}
+
+.scroll-indicator-icms:hover {
+    color: #00BFA5;
+}
+
+/* --- SECTION SANS CASSURE --- */
+.section-seamless {
+    position: relative;
+    padding: 40px 20px 60px;
+    background: #0a0a0a;
+    margin-top: -1px;
+}
+
+/* --- TEXTE NARRATIF CENTRÉ --- */
+.texte-narratif-centre {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.texte-narratif-centre p {
+    margin-bottom: 30px;
+}
+
+.texte-narratif-centre strong {
+    color: white;
+    font-weight: 700;
+}
+
+/* --- SLIDESHOW GLASS --- */
+.slideshow-glass-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 191, 165, 0.3);
+    border-radius: 25px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 191, 165, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.slideshow-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #000;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: scale(1.05);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    pointer-events: none;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+}
+
+.slide-caption h3 {
+    margin: 0;
+    color: white;
+    font-size: 1.3rem;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.slide-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.slide-arrow.prev {
+    left: 15px;
+}
+
+.slide-arrow.next {
+    right: 15px;
+}
+
+.slide-arrow:hover {
+    background: #00BFA5;
+    border-color: #00BFA5;
+    box-shadow: 0 0 20px rgba(0, 191, 165, 0.5);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slide-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot:hover {
+    background: rgba(0, 191, 165, 0.5);
+}
+
+.dot.active {
+    background: #00BFA5;
+    border-color: #00BFA5;
+    box-shadow: 0 0 15px rgba(0, 191, 165, 0.5);
+    transform: scale(1.2);
+}
+
+/* --- BOUTON INSTAGRAM --- */
+.btn-docu {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background-color: #00BFA5;
+    color: white;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    border: 2px solid #00BFA5;
+    box-shadow: 0 4px 20px rgba(0, 191, 165, 0.3);
+}
+
+.btn-docu:hover {
+    background: transparent;
+    border: 2px solid #00BFA5;
+    box-shadow: 0 0 30px rgba(0, 191, 165, 0.5);
+}
+
+/* =========================================
+   THÈME OCÉAN - OVERRIDES GLOBAUX
+   ========================================= */
+
+.theme-ocean .highlight-text {
+    color: #00BFA5;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+}
+
+.theme-ocean .section-line {
+    background: linear-gradient(90deg, transparent, rgba(0, 191, 165, 0.5), transparent);
+}
+
+.theme-ocean .section-title .highlight-text {
+    color: #00BFA5;
+}
+
+.theme-ocean .glass-intro-box {
+    border: 1px solid rgba(0, 191, 165, 0.3);
+    box-shadow: 0 0 30px rgba(0, 191, 165, 0.1);
+}
+
+.theme-ocean .glass-intro-box:hover {
+    box-shadow: 0 0 50px rgba(0, 191, 165, 0.2);
+    border-color: rgba(0, 191, 165, 0.5);
+}
+
+.theme-ocean .footer-glass {
+    border-top: 1px solid rgba(0, 191, 165, 0.2);
+}
+
+.theme-ocean .availability-badge {
+    background: rgba(0, 191, 165, 0.1);
+    border-color: #00BFA5;
+    color: #00BFA5;
+}
+
+.theme-ocean .dot-rec {
+    color: #00BFA5;
+    text-shadow: 0 0 10px #00BFA5;
+}
+
+.theme-ocean .contact-link:hover {
+    color: #00BFA5;
+}
+
+.theme-ocean .social-icon:hover {
+    color: #00BFA5;
+    box-shadow: 0 0 20px rgba(0, 191, 165, 0.5);
+    border-color: #00BFA5;
+}
+
+.theme-ocean .btn-header-cta {
+    background-color: #00BFA5;
+    box-shadow: 0 4px 15px rgba(0, 191, 165, 0.3);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.theme-ocean .btn-header-cta:hover {
+    background: transparent;
+    color: #00BFA5;
+    border: 2px solid #00BFA5;
+    box-shadow: 0 0 20px rgba(0, 191, 165, 0.5);
+    transform: scale(1.05);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .titre-hero-icms {
+        font-size: 2rem;
+        letter-spacing: 5px;
+    }
+
+    .tagline-icms {
+        font-size: 0.9rem;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .dot-separator-icms {
+        display: none;
+    }
+
+    .hero-tag-icms {
+        font-size: 0.75rem;
+        padding: 8px 18px;
+    }
+
+    .slideshow-glass-container {
+        margin: 0 15px;
+        padding: 20px;
+    }
+
+    .slide-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .slide-arrow.prev {
+        left: 10px;
+    }
+
+    .slide-arrow.next {
+        right: 10px;
+    }
+}

@@ -1,0 +1,412 @@
+/* =========================================
+   COMPONENTS.CSS - Header, Footer, Boutons
+   ========================================= */
+
+/* --- HEADER FLOTTANT (GLASSMORPHISM) --- */
+header.header-glass {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Logo */
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.logo a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.logo a:hover {
+    opacity: 0.8;
+}
+
+.header-left .logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Menu Central */
+.header-center ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header-center a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.header-center a:hover {
+    color: white;
+}
+
+/* Navigation générique */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #aaaaaa;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: white;
+}
+
+nav a[href*="cv"] {
+    border: 1px solid white;
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+nav a[href*="cv"]:hover {
+    background-color: white;
+    color: #1a1a1a;
+}
+
+/* Bouton CTA Header */
+.btn-header-cta {
+    background-color: #FA481C;
+    color: black;
+    padding: 10px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: transform 0.3s, background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-header-cta:hover {
+    background-color: white;
+    transform: scale(1.05);
+}
+
+/* --- BOUTONS STYLE GLASS --- */
+.btn-glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ccc;
+    text-decoration: none;
+    padding: 12px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    color: #FA481C;
+    border-color: #FA481C;
+}
+
+.btn-glass.active {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #FA481C;
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(250, 72, 28, 0.4);
+}
+
+/* Boutons Réseaux Sociaux */
+.btn-social-glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 50px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+    min-width: 250px;
+}
+
+.btn-social-glass.yt:hover {
+    background: rgba(255, 0, 0, 0.2);
+    border-color: #FF0000;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+    transform: translateY(-5px);
+}
+
+.btn-social-glass.insta:hover {
+    background: rgba(225, 48, 108, 0.2);
+    border-color: #E1306C;
+    box-shadow: 0 0 30px rgba(225, 48, 108, 0.4);
+    transform: translateY(-5px);
+}
+
+/* --- FOOTER GLASS --- */
+.footer-glass {
+    position: relative;
+    background: #000;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 100px 30px 60px;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.footer-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+    letter-spacing: 4px;
+}
+
+.footer-subtitle {
+    color: #888;
+    margin-bottom: 50px;
+    font-size: 1.3rem;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.social-icon {
+    font-size: 1.8rem;
+    color: white;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon:hover {
+    color: #FA481C;
+    border-color: #FA481C;
+    box-shadow: 0 0 20px rgba(250, 72, 28, 0.4);
+    transform: translateY(-5px);
+}
+
+.footer-bottom p {
+    color: #444;
+    font-size: 0.9rem;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 20px;
+    display: inline-block;
+}
+
+/* Badge disponibilité */
+.availability-badge {
+    background: rgba(250, 72, 28, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid #FA481C;
+    color: #FA481C;
+    display: inline-block;
+    padding: 20px 40px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    line-height: 1.8;
+    box-shadow: 0 0 25px rgba(250, 72, 28, 0.2);
+    transition: all 0.3s ease;
+}
+
+.availability-badge:hover {
+    box-shadow: 0 0 40px rgba(250, 72, 28, 0.4);
+    transform: translateY(-3px);
+}
+
+.sub-availability {
+    font-size: 0.9rem;
+    color: white;
+    font-weight: normal;
+}
+
+.dot-rec {
+    color: #FA481C;
+    animation: blink 1.5s infinite;
+}
+
+/* Contact info */
+.contact-info {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.contact-link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.contact-link:hover {
+    color: #FA481C;
+}
+
+.separator {
+    color: #555;
+    margin: 0 10px;
+}
+
+/* --- MODALES VIDÉO --- */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.active {
+    display: flex !important;
+}
+
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    background: #000;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(250, 72, 28, 0.2);
+}
+
+.iframe-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 10001;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.close-btn:hover {
+    color: #FA481C;
+    transform: rotate(90deg);
+}
+
+/* --- SECTION HEADERS --- */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.section-line {
+    flex: 1;
+    max-width: 150px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(250, 72, 28, 0.5), transparent);
+}
+
+.section-title {
+    font-size: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .separator {
+        display: none;
+    }
+}

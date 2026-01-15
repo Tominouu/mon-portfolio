@@ -1,0 +1,171 @@
+/* =========================================
+   BASE.CSS - Variables, Reset, Typographie
+   ========================================= */
+
+/* Variables CSS */
+:root {
+    --color-primary: #FA481C;
+    --color-primary-rgb: 250, 72, 28;
+    --color-ocean: #00BFA5;
+    --color-ocean-rgb: 0, 191, 165;
+    --color-bg: #000000;
+    --color-bg-light: #0a0a0a;
+    --color-bg-card: rgba(255, 255, 255, 0.05);
+    --color-text: #ffffff;
+    --color-text-muted: #888888;
+    --color-text-light: #cccccc;
+    --color-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Reset de base */
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* Typographie */
+.gold-italic {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--color-primary);
+    font-weight: 400;
+}
+
+.highlight-text {
+    color: var(--color-primary);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.3rem;
+}
+
+/* Ligne décorative */
+.ligne {
+    height: 1px;
+    width: 40px;
+    background-color: var(--color-primary);
+    display: block;
+}
+
+/* =========================================
+   ANIMATIONS GLOBALES
+   ========================================= */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Animation apparition douce */
+.fade-in-up {
+    animation: apparitionDouce 0.8s ease forwards;
+}
+
+@keyframes apparitionDouce {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Animation scroll */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

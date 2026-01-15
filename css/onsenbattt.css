@@ -1,0 +1,357 @@
+/* =========================================
+   ONSENBATTT.CSS - Page On s'en Battt
+   ========================================= */
+
+/* --- TITRE JUMBO (Harmonisé avec Loznis/Apropos) --- */
+.hero-title-jumbo {
+    font-family: 'Impact', 'Arial Black', 'Montserrat', sans-serif;
+    font-size: 8rem;
+    font-weight: 900;
+    line-height: 1;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    margin: 0;
+    animation: zoomIn 1.2s ease-out;
+}
+
+.outline-text {
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.3);
+    color: transparent;
+    transition: all 0.5s ease;
+}
+
+.hero-title-jumbo:hover .outline-text {
+    -webkit-text-stroke: 2px #FA481C;
+    color: rgba(250, 72, 28, 0.1);
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* --- HERO STREET AVEC VIDÉO DE FOND --- */
+.hero-street {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+}
+
+.overlay-street {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.street-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.street-content.cinematic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+}
+
+.hero-tag-street {
+    display: inline-block;
+    background: rgba(250, 72, 28, 0.15);
+    border: 1px solid rgba(250, 72, 28, 0.5);
+    color: #FA481C;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.titre-hero-big {
+    font-size: 5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    letter-spacing: 15px;
+    margin: 20px 0;
+    text-transform: uppercase;
+    text-shadow: 0 0 60px rgba(250, 72, 28, 0.3);
+}
+
+.tagline-street {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1rem;
+    color: #aaa;
+    letter-spacing: 2px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dot-separator {
+    color: #FA481C;
+    font-size: 1.5rem;
+}
+
+.social-actions {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.social-actions.glow-buttons .btn-social-glass {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.social-actions.glow-buttons .btn-social-glass.yt:hover {
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.5);
+}
+
+.social-actions.glow-buttons .btn-social-glass.insta:hover {
+    box-shadow: 0 0 40px rgba(225, 48, 108, 0.5);
+}
+
+.scroll-indicator-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-top: 40px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    transition: color 0.3s;
+}
+
+.scroll-indicator-hero:hover {
+    color: #FA481C;
+}
+
+.scroll-indicator-hero i {
+    font-size: 1.2rem;
+}
+
+/* --- SECTION VLOGS --- */
+.vlog-section {
+    position: relative;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+    padding: 80px 30px;
+    color: white;
+    overflow: hidden;
+}
+
+.vlog-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.vlog-section .section-header,
+.vlog-section .grille-vlogs {
+    position: relative;
+    z-index: 2;
+}
+
+.grille-vlogs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- CARTES VLOG --- */
+.card-vlog {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card-vlog:hover {
+    transform: translateY(-10px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.thumb-wrapper {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.thumb-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: 0.3s;
+}
+
+.card-vlog:hover .thumb-wrapper img {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+.duree {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: black;
+    color: white;
+    padding: 2px 8px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.vlog-info {
+    padding: 20px;
+    text-align: left;
+}
+
+.vlog-info h4 {
+    margin: 0 0 15px 0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.lien-vlog {
+    color: #FA481C;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.card-vlog:hover .lien-vlog {
+    color: white;
+}
+
+/* --- SECTION INTRO --- */
+.intro-onsenbattt {
+    padding: 60px 20px;
+}
+
+.glass-intro-box {
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(250, 72, 28, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(250, 72, 28, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    max-width: 900px;
+    margin: 60px auto 50px;
+    padding: 50px 40px;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-intro-box:hover {
+    transform: translateY(-8px);
+    border-color: #FA481C;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(250, 72, 28, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    background: rgba(30, 30, 30, 0.7);
+}
+
+.glass-intro-box p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #ffffff;
+    font-weight: 400;
+    margin: 0;
+}
+
+/* --- VIMEO CONTAINER --- */
+.vimeo-container-unique {
+    max-width: 1000px;
+    margin: 0 auto 80px;
+}
+
+.vimeo-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.vimeo-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .titre-hero-big {
+        font-size: 2.5rem;
+        letter-spacing: 8px;
+    }
+
+    .tagline-street {
+        font-size: 0.9rem;
+        gap: 10px;
+    }
+
+    .hero-tag-street {
+        font-size: 0.75rem;
+        padding: 8px 18px;
+    }
+}
