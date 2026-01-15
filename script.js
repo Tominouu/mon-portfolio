@@ -67,3 +67,14 @@ document.addEventListener('DOMContentLoaded', () => {
         cursorOutline.classList.remove('clicking');
     });
 });
+
+// Fonction pour toggle le menu mobile
+function toggleMobileNav() {
+    const mobileNav = document.getElementById('mobileNav');
+    const hamburger = document.querySelector('.hamburger-menu');
+
+    if (mobileNav && hamburger) {
+        mobileNav.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    }
+}

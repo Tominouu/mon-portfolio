@@ -76,7 +76,22 @@
                 Mon CV <i class="fas fa-arrow-right"></i>
             </a>
         </div>
+
+        <!-- Menu Hamburger Mobile -->
+        <div class="hamburger-menu" onclick="toggleMobileNav()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </header>
+
+    <!-- Menu Mobile Overlay -->
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="index.html#projets" onclick="toggleMobileNav()">Projets</a>
+        <a href="apropos.html" onclick="toggleMobileNav()">À Propos</a>
+        <a href="cv.html" class="btn-header-cta" onclick="toggleMobileNav()">Mon CV <i
+                class="fas fa-arrow-right"></i></a>
+    </nav>
 
     <!-- Lueurs flottantes en arrière-plan -->
     <div class="floating-glows">
